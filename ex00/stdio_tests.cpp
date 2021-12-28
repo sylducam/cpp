@@ -3,10 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   stdio_tests.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sylducam <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sylducam <sylducam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 19:59:56 by sylducam          #+#    #+#             */
-/*   Updated: 2021/12/28 20:00:01 by sylducam         ###   ########lyon.fr   */
+/*   Updated: 2021/12/28 20:05:55 by sylducam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <iostream>
+
+int	main(void)
+{
+	char	buff[512];
+
+	std::cout << "Hello World !" << std::endl;
+	return(0);
+}
