@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Sample.class.hpp                                   :+:      :+:    :+:   */
+/*   class_tests.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sylducam <sylducam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/30 18:54:47 by sylducam          #+#    #+#             */
-/*   Updated: 2021/12/30 18:56:19 by sylducam         ###   ########.fr       */
+/*   Created: 2021/12/30 18:53:37 by sylducam          #+#    #+#             */
+/*   Updated: 2021/12/30 18:56:34 by sylducam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SAMPLE_CLASS_HPP
-# define SAMPLE_CLASS_HPP
+#include "Sample.class.hpp"
 
-class Sample
+Sample::Sample(void)
 {
-    public:
+    std::cout << "Contructor called" << std::endl;
+    return;
+}
 
-        Sample(void); // contructeur = nom de la classe
-        ~Sample(void); // destructeur = ~nom de la classe
+Sample::~Sample(void)
+{
+    std::cout << "Destructor called" << std::endl;
+    return;
+}
 
-};
-
-#endif
+void    Sample::bar(void)
+{
+    std::cout << "Member function bar called" << std::endl;
+    return;
+}

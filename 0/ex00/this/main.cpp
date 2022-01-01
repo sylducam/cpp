@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Sample.class.hpp                                   :+:      :+:    :+:   */
+/*   class_main.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sylducam <sylducam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sylducam <sylducam@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/30 18:54:47 by sylducam          #+#    #+#             */
-/*   Updated: 2021/12/30 18:56:19 by sylducam         ###   ########.fr       */
+/*   Created: 2022/01/01 15:22:03 by sylducam          #+#    #+#             */
+/*   Updated: 2022/01/01 15:22:11 by sylducam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SAMPLE_CLASS_HPP
-# define SAMPLE_CLASS_HPP
+#include "Sample.class.hpp"
 
-class Sample
+int main()
 {
-    public:
-
-        Sample(void); // contructeur = nom de la classe
-        ~Sample(void); // destructeur = ~nom de la classe
-
-};
-
-#endif
+    Sample  instance;
+    
+    return 0;
+}
