@@ -1,3 +1,3 @@
 C++98
-essayer d'utiliser le + de const possible car le langage c++ est complexe
-et risque
+essayer d'utiliser le + de const et RDONLY possible car le langage c++ est
+complexe et risque >> code robuste sur le long terme + save des heures de debug
