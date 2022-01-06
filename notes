@@ -1,3 +1,10 @@
 C++98
+
 essayer d'utiliser le + de const et RDONLY possible car le langage c++ est
 complexe et risque >> code robuste sur le long terme + save des heures de debug
+
+private / public = controler l'encapsulation des membres d'une classe. Definit
+ce que nous laissons a disposition ou non de l'utilisateur de la classe
+> private = attributs et fonctions membres visibles uniquement a partir de 
+l'interieur de la classe
+> public = "" visibles depuis l'interieur ET l'exterieur de la classe 
