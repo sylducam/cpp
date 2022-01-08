@@ -6,7 +6,7 @@
 /*   By: sylducam <sylducam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 18:54:47 by sylducam          #+#    #+#             */
-/*   Updated: 2021/12/30 18:56:19 by sylducam         ###   ########.fr       */
+/*   Updated: 2022/01/08 21:42:06 by sylducam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,19 @@ class Sample
 {
     public:
 
-        int foo;
+        int public_foo;
 
         Sample(void); // contructeur = nom de la classe
         ~Sample(void); // destructeur = ~nom de la classe
 
-        void    bar(void); // premier parametre est tj un pointeur sur
-                           // l'instance courante. meme s'il n'est pas visible
+        void    public_bar(void) const; // premier parametre est tj un pointeur
+                                       // sur l'instance courante. meme s'il
+                                       // n'est pas visible
+    private:
 
+        int     _private_foo;
+
+        void    _private_bar(void) const;
 };
 
 #endif
