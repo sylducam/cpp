@@ -10,7 +10,7 @@ l'interieur de la classe. Masquer les details d'implementation de la classe
 a l'utilisateur
 > public = "" visibles depuis l'interieur ET l'exterieur de la classe 
 
-STRUCT VS CLASS :
+CLASS VS STRUCT:
 struct = everything public
 class = public and private need to be mentionned
 so we prefer classes
