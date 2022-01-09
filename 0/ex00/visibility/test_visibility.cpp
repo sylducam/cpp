@@ -6,7 +6,7 @@
 /*   By: sylducam <sylducam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 21:45:00 by sylducam          #+#    #+#             */
-/*   Updated: 2022/01/08 21:42:16 by sylducam         ###   ########.fr       */
+/*   Updated: 2022/01/09 11:24:53 by sylducam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,22 @@ Sample::Sample(void)
     this->_private_bar();
     return;
 }
-// ICI
+
+
 Sample::~Sample(void)
 {
     std::cout << "Destructor called" << std::endl;
     return;
 }
 
-void    Sample::bar(void)
+void    Sample::public_bar(void) const
 {
-    std::cout << "Member function bar called" << std::endl;
+    std::cout << "Member function public_bar called" << std::endl;
+    return;
+}
+
+void    Sample::_private_bar(void) const
+{
+    std::cout << "Member function _private_bar called" << std::endl;
     return;
 }
