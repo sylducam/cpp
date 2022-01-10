@@ -39,3 +39,4 @@ int    Sample::compare(Sample * other) const
         return 1;
     return 0;
 }
+
