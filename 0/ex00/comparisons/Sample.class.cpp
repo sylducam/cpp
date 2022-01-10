@@ -1,24 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Sample.class.cpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sylducam <sylducam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/01 15:22:03 by sylducam          #+#    #+#             */
-/*   Updated: 2022/01/09 12:57:15 by sylducam         ###   ########.fr       */
+/*   Created: 2022/01/09 13:19:02 by sylducam          #+#    #+#             */
+/*   Updated: 2022/01/09 13:22:10 by sylducam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Sample.class.hpp"
 
-int main()
+Sample::Sample(void)
 {
-    Sample  instance;
-    instance.set_foo(42);
-    std::cout << "instance.get_foo(): " << instance.get_foo() << std::endl;
-    instance.set_foo(-42);
-    std::cout << "instance.get_foo(): " << instance.get_foo() << std::endl;
-    return 0;
+    std::cout << "Contructor called" << std::endl;
+    this->set_foo(0);
+    std::cout << "this->get_foo(): " << this->get_foo() << std::endl;
+    return;
+}
+
+
+Sample::~Sample(void)
+{
+    std::cout << "Destructor called" << std::endl;
+    return;
+}
+
+int    Sample::get_foo(void) const
+{
+    return this->_foo;
+}
+
+void    Sample::set_foo(int v)
+{
+    if (v >= 0)
+        this->_foo = v;
+    return;
 }

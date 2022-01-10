@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Sample.class.hpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sylducam <sylducam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/01 15:22:03 by sylducam          #+#    #+#             */
-/*   Updated: 2022/01/09 12:57:15 by sylducam         ###   ########.fr       */
+/*   Created: 2022/01/09 13:18:40 by sylducam          #+#    #+#             */
+/*   Updated: 2022/01/09 13:23:35 by sylducam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "Sample.class.hpp"
+#ifndef SAMPLE_CLASS_HPP
+# define SAMPLE_CLASS_HPP
 
-int main()
+struct Sample
 {
-    Sample  instance;
-    instance.set_foo(42);
-    std::cout << "instance.get_foo(): " << instance.get_foo() << std::endl;
-    instance.set_foo(-42);
-    std::cout << "instance.get_foo(): " << instance.get_foo() << std::endl;
-    return 0;
-}
+    public:
+
+        Sample(void); // contructeur = nom de la classe
+        ~Sample(void); // destructeur = ~nom de la classe
+
+        int get_foo(void) const;
+        void    set_foo(int v);
+
+    private:
+
+        int _foo;
+};
+
+#endif
