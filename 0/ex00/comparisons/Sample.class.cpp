@@ -13,11 +13,9 @@
 #include <iostream>
 #include "Sample.class.hpp"
 
-Sample::Sample(void)
+Sample::Sample(int v) : _foo(v)
 {
     std::cout << "Contructor called" << std::endl;
-    this->set_foo(0);
-    std::cout << "this->get_foo(): " << this->get_foo() << std::endl;
     return;
 }
 
@@ -33,9 +31,11 @@ int    Sample::get_foo(void) const
     return this->_foo;
 }
 
-void    Sample::set_foo(int v)
+int    Sample::compare(Sample * other) const
 {
-    if (v >= 0)
-        this->_foo = v;
-    return;
+    if (this->_foo < other->get_foo())
+        return -1;
+    else if (this->_foo > other->get_foo())
+        return 1;
+    return 0;
 }

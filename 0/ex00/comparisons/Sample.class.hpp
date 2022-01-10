@@ -17,11 +17,11 @@ struct Sample
 {
     public:
 
-        Sample(void); // contructeur = nom de la classe
+        Sample(int v); // contructeur = nom de la classe
         ~Sample(void); // destructeur = ~nom de la classe
 
         int get_foo(void) const;
-        void    set_foo(int v);
+        int	compare(Sample * other) const;
 
     private:
 
