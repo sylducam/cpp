@@ -16,9 +16,8 @@
 Sample::Sample(void)
 {
     std::cout << "Contructor called" << std::endl;
-    this->foo = 0;
-    std::cout << "this->foo: " << this->foo << std::endl;
-    this->bar();
+    this->set_foo(0);
+    std::cout << "this->get_foo(): " << this->get_foo() << std::endl;
     return;
 }
 
@@ -29,8 +28,14 @@ Sample::~Sample(void)
     return;
 }
 
-void    Sample::bar(void) const
+int    Sample::get_foo(void) const
 {
-    std::cout << "Member function bar called" << std::endl;
+    return this->_foo;
+}
+
+void    Sample::set_foo(int v)
+{
+    if (v >= 0)
+        this->_foo = v;
     return;
 }
