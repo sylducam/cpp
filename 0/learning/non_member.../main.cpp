@@ -18,33 +18,21 @@ void	f0(void)
 	Sample	instance;
 	std::cout << "Number of instances : " << Sample::get_nb_inst() << std::endl;
 	return;
-	// ICI
+}
+
+void	f1()
+{
+	Sample  instance;
+ 
+	std::cout << "Number of instances : " << Sample::get_nb_inst() << std::endl;
+	f0();
+	return;
 }
 
 int main()
 {
-	Sample  instance1(42);
-	Sample  instance2(42);
- 
-	if (&instance1 == &instance1)
-		std::cout << "instance1 and instance 1 are physically equal" << std::endl;
-	else
-		std::cout << "instance1 and instance 1 are not physically equal" << std::endl;
- 
-	if (&instance1 == &instance2)
-		std::cout << "instance1 and instance 2 are physically equal" << std::endl;
-	else
-		std::cout << "instance1 and instance 2 are not physically equal" << std::endl;
- 
-	if (instance1.compare(&instance1) == 0)
-		std::cout << "instance1 and instance 1 are structurally equal" << std::endl;
-	else
-		std::cout << "instance1 and instance 1 are not structurally equal" << std::endl;
- 
-	if (instance1.compare(&instance2) == 0)
-		std::cout << "instance1 and instance 2 are structurally equal" << std::endl;
-	else
-		std::cout << "instance1 and instance 2 are not structurally equal" << std::endl;
- 
+	std::cout << "Number of instances : " << Sample::get_nb_inst() << std::endl;
+	f1();
+	std::cout << "Number of instances : " << Sample::get_nb_inst() << std::endl;
 	return 0;
 }
