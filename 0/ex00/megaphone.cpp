@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   megaphone.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sylducam <sylducam@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: sylducam <sylducam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 11:18:37 by sylducam          #+#    #+#             */
-/*   Updated: 2022/01/13 11:18:40 by sylducam         ###   ########.fr       */
+/*   Updated: 2022/01/14 16:07:54 by sylducam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,3 @@ int main(int argc, char **argv)
 		megaphone(argv);
 	return (0);
 }
-
-// #include <string>
-// #include <locale>
-
-// std::string str = "Hello World!";
-// auto & f = std::use_facet<std::ctype<char>>(std::locale());
-// f.toupper(str.data(), str.data() + str.size());
-
-// std::use_facet<std::ctype<char> > & f = 
-//     std::use_facet<std::ctype<char> >(std::locale());
-// f.toupper(const_cast<char *>(str.data()), str.data() + str.size());
