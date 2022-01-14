@@ -1,8 +1,8 @@
-NAME		= 	exe_megaphone
+NAME		= 	megaphone
 
 SRCS		=	megaphone.cpp
 
-OBJS		=	$(SRCS:%.c=%.o)
+OBJS		=	$(SRCS:%.cpp=%.o)
 
 CC			= 	clang++
 
@@ -10,7 +10,7 @@ RM			= 	rm -rf
 
 CFLAGS		= 	-Wall -Wextra -Werror
 
-%.o			:	%.c
+%.o			:	%.cpp
 				$(CC) $(CFLAGS) -c $< -o $@
 
 all			:	$(NAME)
@@ -20,9 +20,6 @@ $(NAME)		:	$(OBJS)
 
 clean		:
 				$(RM) $(OBJS)
-# pb sur la ligne du dessus, ca delete mon .cpp. Le probleme vient de la ligne 5
-# (OBJS = $(SRCS:%.c=%.o))
-# + rename l'exe en juste megaphone (comme demande dans le sujet)
 
 fclean		:	clean
 				$(RM) $(NAME)
