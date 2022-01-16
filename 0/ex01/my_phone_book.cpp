@@ -12,10 +12,6 @@ start::~start(void) {}
 
 int main()
 {
-	// std::string name;
-	// std::cout << "Type what you want to do : ADD / SEARCH / EXIT" << std::endl;
-	// std::getline(std::cin, name);
-	// 1 - foutre les trois lignes precedentes dans une class
 	start	instance;
 	// 2 - lancer une instance de cette class au lancement du programme
 	// 3 - Le constructeur de la classe demande ADD / SEARCH / EXIT
