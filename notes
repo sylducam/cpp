@@ -18,4 +18,4 @@ so we prefer classes
 NON MEMBER ATTRIBUTES AND NON MEMBER FUNCTIONS
 variables et fonctions d'instance = attributs et fonctions membres
 variables et fonctions de classe = attributs et fonctions non membres >> sont
-modifies cross instances. Pour cela, utiliser static
+modifies cross instances. Pour cela, utiliser static.
