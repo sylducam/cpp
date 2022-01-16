@@ -5,14 +5,16 @@
 #include <iostream>
 
 // penser a mettre en const ce qui doit l'etre
-// qu'est-ce que je mets en public / private ?
+// qu'est-ce que je mets en public / private ? regardes de nouveau la video sur
+// private
+// fous des const auntant que possible
 
-class phonebook
+class phone_book
 {
 	public:
 
-		start(void); // ne sera pas void
-		~start(void); // ne sera pas void
+		phone_book(void); // ne sera pas void
+		~phone_book(void); // ne sera pas void
 
 	private :
 

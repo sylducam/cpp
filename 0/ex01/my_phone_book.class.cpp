@@ -1,7 +1,8 @@
 #include "my_phone_book.class.hpp"
 
-start::start(void)
+phone_book::phone_book(void)
 {
+	// fous a peu pres totu ce qui suit dans le main
 	std::string name;
 	std::cout << "Welcome to your phone book" << std::endl;
 	std::cout << "Type what you want to do : ADD / SEARCH / EXIT" << std::endl;
@@ -18,7 +19,7 @@ start::start(void)
 
 }
 
-start::~start(void)
+phone_book::~phone_book(void)
 {
-
+	return;
 }
