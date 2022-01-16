@@ -6,7 +6,7 @@
 /*   By: sylducam <sylducam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 13:18:40 by sylducam          #+#    #+#             */
-/*   Updated: 2022/01/09 13:23:35 by sylducam         ###   ########.fr       */
+/*   Updated: 2022/01/16 13:21:20 by sylducam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ class Sample
     public:
 
         int foo;
-        Sample(void); // contructeur = nom de la classe
-        ~Sample(void); // destructeur = ~nom de la classe
+        Sample(void);
+        ~Sample(void);
         void    bar(void) const;
 };
 

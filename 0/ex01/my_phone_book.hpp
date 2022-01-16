@@ -4,10 +4,14 @@
 #include <istream>
 #include <iostream>
 
+// penser a mettre en const ce qui doit l'etre
+// qu'est-ce que je mets en public / private ?
+
 class start
 {
-	start(void)
-	~start(void)
-}
+	public:
+		start(void); // ne sera pas void
+		~start(void); // ne sera pas void
+};
 
 #endif

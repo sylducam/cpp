@@ -6,7 +6,7 @@
 /*   By: sylducam <sylducam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 13:18:40 by sylducam          #+#    #+#             */
-/*   Updated: 2022/01/09 13:23:35 by sylducam         ###   ########.fr       */
+/*   Updated: 2022/01/16 13:22:01 by sylducam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ struct Sample
 {
     public:
 
-        Sample(void); // contructeur = nom de la classe
-        ~Sample(void); // destructeur = ~nom de la classe
+        Sample(void);
+        ~Sample(void);
 
         static int	get_nb_inst(void);
 
