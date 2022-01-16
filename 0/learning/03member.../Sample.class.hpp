@@ -6,7 +6,7 @@
 /*   By: sylducam <sylducam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 18:54:47 by sylducam          #+#    #+#             */
-/*   Updated: 2021/12/30 18:56:19 by sylducam         ###   ########.fr       */
+/*   Updated: 2022/01/16 15:32:43 by sylducam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,13 @@ class Sample
 
         void    bar(void); // premier parametre est tj un pointeur sur
                            // l'instance courante. meme s'il n'est pas visible
+	private :
 
+		std::string _first_name;
+		std::string	_last_name;
+		std::string _nickname;
+		std::string _phone_number;
+		std::string _darkest_secret;
 };
 
 #endif

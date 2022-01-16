@@ -10,8 +10,11 @@
 class start
 {
 	public:
+
 		start(void); // ne sera pas void
 		~start(void); // ne sera pas void
+
+		
 };
 
 #endif
