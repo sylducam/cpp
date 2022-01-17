@@ -18,13 +18,19 @@ class phone_book
 
 	private :
 
+		int	nb_of_contacts;
+// tout ce qui suit doit faire partie de l'autre classe, la classe contacts
+// dans la classe phone_book tu peux mettre le nombre de contacts qu'il y a
+// et ca doit s'arreter a huit
 		std::string _first_name;
 		std::string	_last_name;
 		std::string _nickname;
 		std::string _phone_number;
 		std::string _darkest_secret;
+
+		static	bool	phone_book_instance = false;
 };
 
-class contacts // in another .hpp
+// class contacts // in another .hpp
 
 #endif

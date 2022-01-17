@@ -1,17 +1,30 @@
 // ajoutes les includes
 #include "my_phone_book.class.hpp"
-fonction ADD
-	phone_book	instance;
+// add include of contacts class (hpp) if ever you make one
 
+void	add()
+{
+	if (phone_book_instance == false)
+		phone_book	instance;
+	if (nb_of_contacts == 8)
+	{
+		std::cout << "The 8 contacts limit of your phone book has been reached.\
+		 You can't add anymore contacts." std::endl;
+		return;
+	}
+	return;
+}
 
 int main()
 {
+	phone_book_instance = false;
 	std::string name;
 	std::cout << "Welcome to your phone book" << std::endl;
 	std::cout << "Type what you want to do : ADD / SEARCH / EXIT" << std::endl;
 	std::getline(std::cin, name);
 	if (name == "ADD")
-		std::cout << "X" << std::endl; // fonction a la place
+		add();
+	//	std::cout << "X" << std::endl; // fonction a la place
 	else if (name == "SEARCH")
 		std::cout << "Y" << std::endl; // fonction a la place
 	else if (name == "EXIT")
