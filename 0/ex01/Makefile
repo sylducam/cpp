@@ -1,8 +1,8 @@
 NAME		= 	phonebookmanager
 
-SRCS		=	my_phone_book.class.cpp\
+SRCS		=	contact.class.cpp\
 
-HEADER		=	my_phone_book.class.hpp
+HEADER		=	contact.class.hpp
 
 OBJS		=	$(SRCS:%.cpp=%.o)
 
