@@ -26,4 +26,5 @@ void	contact::set_contact()
 	std::getline(std::cin, this->_phone_number);
 	std::cout << "First name: " << std::endl;
 	std::getline(std::cin, this->_first_name);
+	std::cout << "Contact added ! " << std::endl;
 }

@@ -2,14 +2,48 @@
 #include "contact.class.hpp"
 // add include of contacts class (hpp) if ever you make one
 
-void	add_contact()
+std::string resize_string (std::string src)
 {
+	if(src.size() > 9)
 	{
-		std::cout << "The 8 contacts limit of your phone book has been reached.\
-		 You can't add anymore contacts." << std::endl;
-		return;
+		src.resize(9);
+		src.append(".");
 	}
-	return;
+	return(src);
+}
+
+void	search_pb(contact *dir, int i)
+{
+	int index = 0;
+	int	j = 0;
+	std::string buffer; 
+			if(i == 0)
+				std::cout<<"no contact"<<std::endl;
+			else
+			{
+				std::cout << "|" << std::setw(10) << "index";
+				std::cout << "|" << std::setw(10) << "first_name";
+				std::cout << "|" << std::setw(10) << "last_name";
+				std::cout << "|" << std::setw(10) << "nick_name";
+				std::cout << "|" << std::endl;
+				while(j < i) // pb ici ? dan le code de Nico c'etait !=, pas <
+				{
+					std::cout << "|" << std::setw(10) << j + 1;
+					std::cout << "|" << std::setw(10) << resize_string(dir[j].get_first_name());
+					std::cout << "|" << std::setw(10) << resize_string(dir[j].get_last_name());
+					std::cout << "|" << std::setw(10) << resize_string(dir[j].get_nickname());
+					std::cout << "|" << std::endl;
+					j++;
+				}
+					std::cout<<std::endl<<"index : ";
+					std::cin.ignore();
+					std::getline(std::cin, buffer);
+					index = atoi(buffer.c_str());
+					if((index >= 1 && index <= 8) && buffer.size() == 1 && index <= i)
+						dir[index - 1].print_attribute();
+					else
+						std::cout<<"erreur index"<<std::endl;
+			}
 }
 
 int main(void)
@@ -30,13 +64,13 @@ int main(void)
 				std::cout << "You have reached the 8 contacts limit." << std::endl;
 			else
 			{
-				add_contact(); // add_contact + define function in class
+				directory[i].set_contact();
 				i++;
 			}
 		}
 		//	std::cout << "X" << std::endl; // fonction a la place
 		else if (input.compare("SEARCH") == 0)
-			std::cout << "Y" << std::endl; // fonction a la place
+			search_pb(directory, i);
 		else if (input.compare("EXIT") == 0)
 		{
 			exit = true;

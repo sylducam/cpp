@@ -1,6 +1,7 @@
 NAME		= 	phonebookmanager
 
 SRCS		=	contact.class.cpp\
+				main.cpp
 
 HEADER		=	contact.class.hpp
 
@@ -18,7 +19,7 @@ CFLAGS		= 	-Wall -Wextra -Werror -std=c++98 -Iinclude
 all			:	$(NAME)
 
 $(NAME)		:	$(OBJS)
-				$(CC) $(CFLAGS) $(OBJS) main.cpp -o $(NAME) -Iinclude
+				$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -Iinclude
 
 clean		:
 				$(RM) $(OBJS)
