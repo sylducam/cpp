@@ -1,4 +1,4 @@
-NAME		= 	phonebookmanager
+NAME		= 	phone_book_manager
 
 SRCS		=	contact.class.cpp\
 				main.cpp
@@ -11,7 +11,7 @@ CC			= 	clang++
 
 RM			= 	rm -rf
 
-CFLAGS		= 	-Wall -Wextra -Werror -std=c++98 -Iinclude
+CFLAGS		= 	-Wall -Wextra -Werror -std=c++98
 
 %.o			:	%.cpp $(HEADER)
 				$(CC) $(CFLAGS) -c $< -o $@

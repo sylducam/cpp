@@ -1,6 +1,4 @@
-// ajoutes les includes
 #include "contact.class.hpp"
-// add include of contacts class (hpp) if ever you make one
 
 std::string resize_string (std::string src)
 {
@@ -12,38 +10,50 @@ std::string resize_string (std::string src)
 	return(src);
 }
 
-void	search_pb(contact *dir, int i)
+void	search_phone_book(contact *dir, int i)
 {
-	int index = 0;
-	int	j = 0;
-	std::string buffer; 
-			if(i == 0)
-				std::cout<<"no contact"<<std::endl;
-			else
+	int			index = 0;
+	int			j = 0;
+	std::string input;
+	bool		found = false;
+	while(found == false)
+	{
+		if(i == 0)
+		{
+			std::cout << "Your phone book is empty. Try adding some contacts." << std::endl;
+			found = true;
+		}
+		else
+		{
+			std::cout << "|" << std::setw(10) << "index";
+			std::cout << "|" << std::setw(10) << "first_name";
+			std::cout << "|" << std::setw(10) << "last_name";
+			std::cout << "|" << std::setw(10) << "nick_name";
+			std::cout << "|" << std::endl;
+			while(j < i)
 			{
-				std::cout << "|" << std::setw(10) << "index";
-				std::cout << "|" << std::setw(10) << "first_name";
-				std::cout << "|" << std::setw(10) << "last_name";
-				std::cout << "|" << std::setw(10) << "nick_name";
+				std::cout << "|" << std::setw(10) << j + 1;
+				std::cout << "|" << std::setw(10) << resize_string(dir[j].get_first_name());
+				std::cout << "|" << std::setw(10) << resize_string(dir[j].get_last_name());
+				std::cout << "|" << std::setw(10) << resize_string(dir[j].get_nickname());
 				std::cout << "|" << std::endl;
-				while(j < i) // pb ici ? dan le code de Nico c'etait !=, pas <
-				{
-					std::cout << "|" << std::setw(10) << j + 1;
-					std::cout << "|" << std::setw(10) << resize_string(dir[j].get_first_name());
-					std::cout << "|" << std::setw(10) << resize_string(dir[j].get_last_name());
-					std::cout << "|" << std::setw(10) << resize_string(dir[j].get_nickname());
-					std::cout << "|" << std::endl;
-					j++;
-				}
-					std::cout<<std::endl<<"index : ";
-					std::cin.ignore();
-					std::getline(std::cin, buffer);
-					index = atoi(buffer.c_str());
-					if((index >= 1 && index <= 8) && buffer.size() == 1 && index <= i)
-						dir[index - 1].print_attribute();
-					else
-						std::cout<<"erreur index"<<std::endl;
+				j++;
 			}
+				std::cout<<std::endl<<"Please type the index of the desired contact" << std::endl;
+				std::getline(std::cin, input);
+				index = atoi(input.c_str());
+				if((index >= 1 && index <= 8) && input.size() == 1 && index <= i)
+				{
+					dir[index - 1].print_contact();
+					found = true;
+				}
+				else
+				{
+					std::cout<<"Unexisting index, try again."<<std::endl;
+					j = 0;
+				}
+		}
+	}
 }
 
 int main(void)
@@ -55,7 +65,6 @@ int main(void)
 	std::cout << "Hi, I am your phone book !" << std::endl;
 	while (exit == false)
 	{
-			// std::cout << "" // finis ca et sois sur que la condition est bonne
 		std::cout << "What can I do you for ? ADD / SEARCH / EXIT" << std::endl;
 		std::getline(std::cin, input);
 		if (input.compare("ADD") == 0)
@@ -68,23 +77,15 @@ int main(void)
 				i++;
 			}
 		}
-		//	std::cout << "X" << std::endl; // fonction a la place
 		else if (input.compare("SEARCH") == 0)
-			search_pb(directory, i);
+			search_phone_book(directory, i);
 		else if (input.compare("EXIT") == 0)
 		{
 			exit = true;
 			std::cout << "Bye bye dear user !" << std::endl;
 		}
 		else
-			std::cout << "Wrong entry." << std::endl; // retour d'erreur
+			std::cout << "Wrong entry, try again." << std::endl;
 	}
-	// 4 - Une fonction dans la classe permet de recuperer lequel des trois
-	// et de la, lances l'une des trois actions differente. (je suis brouillon
-	// a partir de la car je ne sais pas ce que je vais faire. Besoin de lire
-	// mieux la suite du sujet et strategiser)
-
-	// std::cout << "Please, enter your full input: ";
-	// std::cout << "Hello, " << input << "!\n";
 	return (0);
 }
