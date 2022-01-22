@@ -45,7 +45,7 @@ void	Account::_displayTimestamp(void)
 
 int		Account::checkAmount(void) const
 {
-	return this->_amount > 0;
+	return this->_amount > 0; // ICI
 }
 
 void	Account::displayStatus(void) const
@@ -55,7 +55,7 @@ void	Account::displayStatus(void) const
 	{
 		_displayTimestamp();
 		std::cout << "index: " << i << ";";
-		std::cout << "amount: " << checkAmount() << ";"; // coder checkAmount
+		std::cout << "amount: " << checkAmount() << ";"; // coder checkAmount et ICI
 		std::cout << "deposits: " << i << ";";
 		std::cout << "withdrawals: " << i << ";";
 		i--;
