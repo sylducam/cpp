@@ -1,10 +1,13 @@
+// #include <vector>
+// #include <algorithm>
+// #include <functional>
 #include <iostream>
 #include <iomanip>
 #include <ctime>
 #include "Account.hpp"
 
-int Account::_nbAccounts = 0;
-int Account::_totalAmount = 0;
+int	Account::_nbAccounts = 0;
+int	Account::_totalAmount = 0;
 int Account::_totalNbDeposits = 0;
 int Account::_totalNbWithdrawals = 0;
 
@@ -27,7 +30,7 @@ Account::~Account(void)
 	std::cout << "index:" << this->_accountIndex << ";amount:" << this->_amount << ";closed" << std::endl;
 }
 
-void Account::_displayTimestamp(void)
+void	Account::_displayTimestamp(void)
 {
 	std::time_t generaltime = std::time(0);
 	std::tm *localt = localtime(&generaltime);
@@ -38,4 +41,32 @@ void Account::_displayTimestamp(void)
 			  << std::setw(2) << localt->tm_hour
 			  << std::setw(2) << localt->tm_min
 			  << std::setw(2) << localt->tm_sec << "] ";
+}
+
+int		Account::checkAmount(void) const
+{
+	return this->_amount > 0;
+}
+
+void	Account::displayStatus(void) const
+{
+	int	i = 0;
+	while(i <= getNbAccounts())
+	{
+		_displayTimestamp();
+		std::cout << "index: " << i << ";";
+		std::cout << "amount: " << checkAmount() << ";"; // coder checkAmount
+		std::cout << "deposits: " << i << ";";
+		std::cout << "withdrawals: " << i << ";";
+		i--;
+	}
+}
+
+void	Account::displayAccountsInfos(void)
+{
+	Account::_displayTimestamp();
+	std::cout << "accounts:" << Account::_nbAccounts << ";";
+	std::cout << "total:" << Account::_totalAmount << ";";
+	std::cout << "deposits:" << Account::_totalNbDeposits << ";";
+	std::cout << "withdrawals:" << Account::_totalNbWithdrawals << std::endl;
 }
