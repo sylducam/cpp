@@ -1,0 +1,3 @@
+new and delete replace malloc and free.
+don't delete something malloced
+don't free something newed

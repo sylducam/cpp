@@ -7,7 +7,7 @@ class	Student
 		std::string _login;
 
 	public:
-		Student(std::string login) : _login(login)
+		Student() : _login("ldefault")
 		{
 			std::cout << "Student " << this->_login << " is born" << std::endl;
 		}
@@ -19,10 +19,9 @@ class	Student
 
 int	main()
 {
-	Student		bob = Student("bfubar");
-	Student*	jim = new Student("jfubar");
+	Student*	students = new Student[42];
 
-	delete	jim;
+	delete [] students;
 
 	return(0);
 }
