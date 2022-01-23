@@ -34,7 +34,7 @@ public:
 
 	void	makeDeposit( int deposit );
 	bool	makeWithdrawal( int withdrawal );
-	int		checkAmount( void ) const; // utilisee dans une autre fonction peut-etre
+	int		checkAmount( void ) const;
 	void	displayStatus( void ) const;
 
 

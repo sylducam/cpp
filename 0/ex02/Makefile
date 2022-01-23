@@ -1,25 +1,20 @@
-NAME		= 	phone_book_manager
+NAME		= 	bank
 
-SRCS		=	contact.class.cpp\
-				main.cpp
+SRCS		=	Account.cpp\
+				tests.cpp
 
-HEADER		=	contact.class.hpp
+HEADER		=	Account.hpp
 
-OBJS		=	$(SRCS:%.cpp=%.o)
-
-CC			= 	clang++
+COMP			= 	clang++
 
 RM			= 	rm -rf
 
 CFLAGS		= 	-Wall -Wextra -Werror -std=c++98
 
-%.o			:	%.cpp $(HEADER)
-				$(CC) $(CFLAGS) -c $< -o $@
-
 all			:	$(NAME)
 
-$(NAME)		:	$(OBJS)
-				$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -Iinclude
+$(NAME)		:	$(SRCS) $(HEADER)
+				$(CC) $(CFLAGS) $(SRCS) -o $(NAME) -Iinclude
 
 clean		:
 				$(RM) $(OBJS)
