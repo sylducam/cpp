@@ -5,27 +5,21 @@ SRCS		=	contact.class.cpp\
 
 HEADER		=	contact.class.hpp
 
-OBJS		=	$(SRCS:%.cpp=%.o)
-
-CC			= 	clang++
+COMP		= 	clang++
 
 RM			= 	rm -rf
 
 CFLAGS		= 	-Wall -Wextra -Werror -std=c++98
 
-%.o			:	%.cpp $(HEADER)
-				$(CC) $(CFLAGS) -c $< -o $@
-
 all			:	$(NAME)
 
-$(NAME)		:	$(OBJS)
-				$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -Iinclude
+$(NAME)		:	$(SRCS) $(HEADER)
+				$(COMP) $(CFLAGS) $(SRCS) -o $(NAME) -Iinclude
 
 clean		:
-				$(RM) $(OBJS)
+				$(RM) $(NAME)
 
 fclean		:	clean
-				$(RM) $(NAME)
 
 re			:	fclean all
 

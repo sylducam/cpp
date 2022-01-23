@@ -5,7 +5,7 @@ SRCS		=	Account.cpp\
 
 HEADER		=	Account.hpp
 
-COMP			= 	clang++
+COMP		= 	clang++
 
 RM			= 	rm -rf
 
@@ -14,13 +14,12 @@ CFLAGS		= 	-Wall -Wextra -Werror -std=c++98
 all			:	$(NAME)
 
 $(NAME)		:	$(SRCS) $(HEADER)
-				$(CC) $(CFLAGS) $(SRCS) -o $(NAME) -Iinclude
+				$(COMP) $(CFLAGS) $(SRCS) -o $(NAME) -Iinclude
 
 clean		:
-				$(RM) $(OBJS)
+				$(RM) $(NAME)
 
 fclean		:	clean
-				$(RM) $(NAME)
 
 re			:	fclean all
 
