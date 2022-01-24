@@ -5,5 +5,5 @@
 
 void randomChump(std::string name)
 {
-	Zombie instanceStack	Zombie(name);
+	Zombie instanceStack(name);
 }

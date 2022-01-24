@@ -1,7 +1,9 @@
 NAME		= 	bank
 
-SRCS		=	Account.cpp\
-				tests.cpp
+SRCS		=	main.cpp\
+				Zombie.cpp\
+				newZombie.cpp
+# ICI ^
 
 HEADER		=	Account.hpp
 

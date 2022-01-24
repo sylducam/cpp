@@ -11,7 +11,7 @@ int	main(int argc, char **argv)
 		std::cout << "Read tutorial above :)" << std::endl;
 		return (1);
 	}
-	Zombie *heapedZombie = newZombie(argv[1]); // delete it ICI
+	Zombie *heapedZombie = newZombie(argv[1]);
 	delete heapedZombie;
 	randomChump(argv[2]);
 	return (0);
