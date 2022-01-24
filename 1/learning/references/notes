@@ -1,5 +1,10 @@
 reference = pointeur qui est :
 1 - constant
+dans le sens ou l'adresse qui y a ete assignee au depart (voir
+exemple en dessous) ne peut pas etre modifiee, on ne peut pas y assigner une
+autre adresse que celle qui a ete assignee a sa creation. Par contre on peut
+changer la valeur de ce qu'il y a a cette adresse (refered dans l'exemple en
+dessous)
 2 - toujours dereference
 3 - jamais null
 
@@ -14,3 +19,8 @@ Donc interdit d'assigner autre chose que refered, a name, par la suite.
 creation, car c'est un pointeur constant, donc une fois qu'on l'a cree on
 ne pourra pas y assigner autre chose plus tard. De plus, elle ne peut pas
 pointer sur rien
+
+
+
+pointeurs toujours utiles car possibilite de ne rien mette deans et de changer
+ce qu'il y a dedans
