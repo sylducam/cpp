@@ -1,1 +1,16 @@
-i
+reference = pointeur qui est :
+1 - constant
+2 - toujours dereference
+3 - jamais null
+
+syntaxe :
+
+int& name = refered;
+On dit que name est de type reference sur int.
+Pas besoin de mettre &refered, direct refered.
+1 - Pas possible de changer ce vers quoi pointe la reference.
+Donc interdit d'assigner autre chose que refered, a name, par la suite.
+2 - On doit obligatoirement mettre la variable dans la reference des sa
+creation, car c'est un pointeur constant, donc une fois qu'on l'a cree on
+ne pourra pas y assigner autre chose plus tard. De plus, elle ne peut pas
+pointer sur rien
