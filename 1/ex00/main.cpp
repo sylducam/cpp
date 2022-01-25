@@ -9,6 +9,7 @@ int	main(int argc, char **argv)
 		return (-1);
 	}
 	Zombie *heapedZombie = newZombie(argv[1]);
+	heapedZombie->announce();
 	delete heapedZombie;
 	randomChump(argv[2]);
 	return (0);

@@ -2,7 +2,6 @@
 
 Zombie::Zombie(std::string name) : _name (name)
 {
-	Zombie::announce();
 }
 
 Zombie::~Zombie(void)

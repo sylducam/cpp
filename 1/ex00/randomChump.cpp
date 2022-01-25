@@ -3,4 +3,5 @@
 void randomChump(std::string name)
 {
 	Zombie instanceStack(name);
+	instanceStack.announce();
 }
