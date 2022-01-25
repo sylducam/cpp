@@ -17,6 +17,8 @@ int main(int argc, char **argv)
 		return (-1);
 	}
 	Zombie *brainlessHorde = zombieHorde(N, argv[2]);
+	for(int i = 0; i < N; i++)
+		brainlessHorde[i].announce();
 	delete [] brainlessHorde;
 	return (0);
 }
