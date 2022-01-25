@@ -1,10 +1,8 @@
-NAME		= 	cemetery
+NAME		= 	horde
 
 SRCS		=	main.cpp\
 				Zombie.cpp\
-				newZombie.cpp\
-				randomChump.cpp
-# ICI ^
+				ZombieHorde.cpp
 
 HEADER		=	Zombie.hpp
 

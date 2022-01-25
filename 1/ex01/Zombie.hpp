@@ -3,6 +3,7 @@
 
 # include <string>
 # include <iostream>
+# include <sstream>
 
 /*                         CLASS                         */
 
@@ -18,8 +19,8 @@ public:
 	Zombie();
 	~Zombie();
 
+	void	setBaptism(std::string name);
 	void	announce(void) const;
-	void	setBaptism(std::string name) const;
 };
 
 /*                       FUNCTIONS                       */

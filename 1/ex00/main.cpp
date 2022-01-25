@@ -6,7 +6,7 @@ int	main(int argc, char **argv)
 	{
 		std::cout << "Usage : ./cemetery <first zombie name> <seconde zombie name>" << std::endl;
 		std::cout << "Note that the first zombie will be allocated to the heap and the second one to the stack." << std::endl;
-		return (1);
+		return (-1);
 	}
 	Zombie *heapedZombie = newZombie(argv[1]);
 	delete heapedZombie;
