@@ -2,7 +2,7 @@
 # define ZOMBIE_H
 
 # include <string>
-#include <iostream>
+# include <iostream>
 
 /*                 CLASS                  */
 
