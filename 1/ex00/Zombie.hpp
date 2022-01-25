@@ -2,7 +2,6 @@
 # define ZOMBIE_H
 
 # include <string>
-# include <iostream> // yes ?
 
 /*                 CLASS                  */
 

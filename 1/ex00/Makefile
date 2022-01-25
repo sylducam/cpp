@@ -1,15 +1,16 @@
-NAME		= 	bank
+NAME		= 	cemetery
 
 SRCS		=	main.cpp\
 				Zombie.cpp\
-				newZombie.cpp
+				newZombie.cpp\
+				randomChump.cpp
 # ICI ^
 
-HEADER		=	Account.hpp
+HEADER		=	Zombie.hpp
 
 COMP		= 	clang++
 
-RM			= 	rm -rf
+RM			= 	rm
 
 CFLAGS		= 	-Wall -Wextra -Werror -std=c++98
 
