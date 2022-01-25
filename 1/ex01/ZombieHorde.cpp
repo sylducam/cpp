@@ -3,10 +3,10 @@
 Zombie*    zombieHorde(int N, std::string name)
 {
 	Zombie*	brainlessHorde = new Zombie[N];
-	for(int i = 0; i <= N; i++)
+	for(int i = 0; i < N; i++)
 	{
-		brainlessHorde[N].setBaptism(name);
-		brainlessHorde[N].announce();
+		brainlessHorde[i].setBaptism(name);
+		brainlessHorde[i].announce();
 	}
 	return(brainlessHorde);
 }

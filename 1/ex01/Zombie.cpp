@@ -11,7 +11,7 @@ Zombie::~Zombie(void)
 
 void	Zombie::setBaptism(std::string name)
 {
-	this->_name = name;	
+	_name = name;
 }
 
 void	Zombie::announce(void) const

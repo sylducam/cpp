@@ -17,6 +17,6 @@ int main(int argc, char **argv)
 		return (-1);
 	}
 	Zombie *brainlessHorde = zombieHorde(N, argv[2]);
-	delete brainlessHorde;
+	delete [] brainlessHorde;
 	return (0);
 }
