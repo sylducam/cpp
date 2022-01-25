@@ -1,11 +1,10 @@
 #include "Zombie.hpp"
-#include <iostream>
 
 int	main(int argc, char **argv)
 {
 	if (argc != 3)
 	{
-		std::cout << "Usage : ./Cemetery <first zombie name> <seconde zombie name>" << std::endl;
+		std::cout << "Usage : ./cemetery <first zombie name> <seconde zombie name>" << std::endl;
 		std::cout << "Note that the first zombie will be allocated to the heap and the second one to the stack." << std::endl;
 		return (1);
 	}

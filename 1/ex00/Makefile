@@ -10,7 +10,7 @@ HEADER		=	Zombie.hpp
 
 COMP		= 	clang++
 
-RM			= 	rm
+RM			= 	rm -rf
 
 CFLAGS		= 	-Wall -Wextra -Werror -std=c++98
 
