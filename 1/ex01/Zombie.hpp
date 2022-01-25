@@ -16,8 +16,8 @@ private:
 
 public:
 
-	Zombie();
-	~Zombie();
+	Zombie(void);
+	~Zombie(void);
 
 	void	setBaptism(std::string name);
 	void	announce(void) const;
