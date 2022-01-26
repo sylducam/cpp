@@ -10,7 +10,7 @@ HumanB::~HumanB(void)
 
 void	HumanB::setWeapon(Weapon tool)
 {
-// ICI
+	this->_weaponB = tool;
 }
 
 void	HumanB::attack(void) const
