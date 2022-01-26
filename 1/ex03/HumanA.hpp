@@ -8,11 +8,11 @@ class	HumanA
 	private:
 
 		std::string	_name;
-		std::string	_weaponType;
+		Weapon _weaponType;
 
 	public:
 
-		HumanA(std::string name, std::string tool);
+		HumanA(std::string const& name, Weapon& club);
 		~HumanA(void);
 		void	attack(void) const;
 
