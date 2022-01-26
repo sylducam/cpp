@@ -66,7 +66,8 @@ int main(void)
 	while (exit == false)
 	{
 		std::cout << "What can I do you for ? ADD / SEARCH / EXIT" << std::endl;
-		std::getline(std::cin, input);
+		if(std::getline(std::cin, input) == 0)
+			return(0);
 		if (input.compare("ADD") == 0)
 		{
 			if (i == 8)
