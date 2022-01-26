@@ -15,6 +15,9 @@ struct = everything public
 class = public and private need to be mentionned
 so we prefer classes
 
+this sert a faire reference a l'instance courante de la classe, au sein de la
+classe. Donc, utile dans le cas ou nous avons plusieurs instance.
+
 NON MEMBER ATTRIBUTES AND NON MEMBER FUNCTIONS
 variables et fonctions d'instance = attributs et fonctions membres
 variables et fonctions de classe = attributs et fonctions non membres >> sont
