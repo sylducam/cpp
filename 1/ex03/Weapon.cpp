@@ -1,13 +1,17 @@
 #include "Weapon.hpp"
-#include "HumanA.hpp"
-#include "HumanB.hpp"
+
+Weapon::Weapon(std::string type)
+{
+}
+
+Weapon::~Weapon(void)
+{
+}
 
 std::string	Weapon::getType() const
 {
-	
 }
 
 void	Weapon::setType(std::string	_type)
 {
-
 }
