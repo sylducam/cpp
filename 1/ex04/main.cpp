@@ -5,6 +5,7 @@ int main(int argc, char **argv) {
 	if (argc == 4) {
 		std::ifstream	my_file(argv[1]);
 		if (argv[2][0] == 0 || argv[3][0] == 0 || !my_file.is_open())
+		
 			return 1;
 		std::string		s1 = argv[2];
 		std::string		s2 = argv[3];
