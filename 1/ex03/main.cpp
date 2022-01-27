@@ -3,7 +3,7 @@
 
 int main(void)
 {
-	{ // try without these brackets
+	{
 		Weapon  club = Weapon("crude spiked club");
 		HumanA bob("Bob", club);
 		bob.attack();

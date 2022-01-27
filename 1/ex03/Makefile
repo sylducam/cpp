@@ -1,6 +1,8 @@
-NAME		= 	ref
+NAME		= 	weapon
 
-SRCS		=	main.cpp
+SRCS		=	$(wildcard *.cpp)
+
+HEADERS		=	$(wildcard *.hpp)
 
 COMP		= 	clang++
 
@@ -10,8 +12,8 @@ CFLAGS		= 	-Wall -Wextra -Werror -std=c++98
 
 all			:	$(NAME)
 
-$(NAME)		:	$(SRCS)
-				$(COMP) $(CFLAGS) $(SRCS) -o $(NAME)
+$(NAME)		:	$(SRCS) $(HEADERS)
+				$(COMP) $(CFLAGS) $(SRCS) -o $(NAME) -Iinclude
 
 clean		:
 				$(RM) $(NAME)
