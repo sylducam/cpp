@@ -5,10 +5,10 @@ int main(int argc, char **argv)
     Karen karen;
     std::string levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 
-	if (argc < 2)
+	if (argc != 2)
 	{
 		std::cout << "Usage > ./karenFilter <DEBUG> / <INFO> / <WARNING> / <ERROR>" << std::endl;
-		return (1);
+		return (-1);
 	}
     int index = -1;
 	for (int i = 0; i < 4; i++)
