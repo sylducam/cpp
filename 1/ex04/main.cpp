@@ -34,6 +34,7 @@ int main(int argc, char **argv)
 		size_t 			pos = 0;
 		std::string		temp((std::istreambuf_iterator<char>(my_file)), std::istreambuf_iterator<char>());
 		std::ofstream	out_file;
+		std::string		out_file_name;
 		for (size_t n = temp.find(s1, 0); n != std::string::npos ; n = temp.find(s1, n))
 		{
 			res.append(temp, pos, n - pos);
@@ -43,9 +44,9 @@ int main(int argc, char **argv)
 		}
 		res.append(temp.begin() + pos, temp.end());
 		my_file.close();
-		temp = argv[1];
-		temp.append(".replace");
-		out_file.open(temp);
+		out_file_name = argv[1];
+		out_file_name.append(".replace");
+		out_file.open(out_file_name);
 		if (out_file.fail())
 
 		{
