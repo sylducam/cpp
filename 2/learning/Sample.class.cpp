@@ -8,4 +8,4 @@ Sample::~Sample(void)
 {
 }
 
-void	Sample::bar()
+void	Sample::bar(char const)
