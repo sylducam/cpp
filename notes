@@ -17,6 +17,11 @@ so we prefer classes
 
 this sert a faire reference a l'instance courante de la classe, au sein de la
 classe. Donc, utile dans le cas ou nous avons plusieurs instance.
+Il passe, sans que ce soit dit, en premier paramaetre cache de chaque fonction
+membre (this = l'instance courante)
+
+CONST
+Une fonction est const lorsque ce qu'elle fait ne modifie pas l'instance courante
 
 NON MEMBER ATTRIBUTES AND NON MEMBER FUNCTIONS
 variables et fonctions d'instance = attributs et fonctions membres
