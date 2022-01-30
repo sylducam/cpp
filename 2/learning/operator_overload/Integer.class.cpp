@@ -10,14 +10,14 @@ Integer::~Integer(void)
 	std::cout << "Destructor called with value " << this->_n << std::endl;
 }
 
-int		Integer::getValue(void) const // renvoie une copie de la valeur car pas &
+int			Integer::getValue(void) const // renvoie une copie de la valeur car pas &
 {
 	return this->_n;
 }
 
 Integer&	Integer::operator=(Integer const& rhs)
 {
-	std::cout << "Assignation oprator called from " << this->_n;
+	std::cout << "Assignation operator called from " << this->_n;
 	std::cout << " to " << rhs.getValue() << std::endl;
 
 	this->_n = rhs.getValue();
@@ -25,9 +25,9 @@ Integer&	Integer::operator=(Integer const& rhs)
 	return *this;
 }
 
-Integer	Integer::operator+(Integer const& rhs) const
+Integer		Integer::operator+(Integer const& rhs) const
 {
-	std::cout << "Addition oprator called with " << this->_n;
+	std::cout << "Addition operator called with " << this->_n;
 	std::cout << " and " << rhs.getValue() << std::endl;
 
 	return Integer(this->_n + rhs.getValue());

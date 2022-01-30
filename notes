@@ -1,5 +1,16 @@
 C++98
 
+Construcors
+Quand un constructeur par defaut n'est pas necessaire, car il n'y a pas besoin
+que l'utilisateur y accede, on peut le mettre en privee dans la class.hpp,
+histoire de garder une forme canonique
+
+Bonne idee d'ajouter un geter pour toute variable privee et une fonction pour
+"serialiser" sa classe, sur le modele :
+std::ostream&	operator<<(std::ostream& o, Sample const& rhs);
+mais qui renvoie une string. Peut bien aider pour le debug
+(todo : a approfondir, ecrire la fonction correctement et tester)
+
 essayer d'utiliser le + de const et RDONLY possible car le langage c++ est
 complexe et risque >> code robuste sur le long terme + save des heures de debug
 
@@ -21,7 +32,8 @@ Il passe, sans que ce soit dit, en premier paramaetre cache de chaque fonction
 membre (this = l'instance courante)
 
 CONST
-Une fonction est const lorsque ce qu'elle fait ne modifie pas l'instance courante
+Une fonction est const lorsque ce qu'elle fait ne modifie pas l'instance
+courante
 
 NON MEMBER ATTRIBUTES AND NON MEMBER FUNCTIONS
 variables et fonctions d'instance = attributs et fonctions membres
@@ -29,3 +41,9 @@ variables et fonctions de classe = attributs et fonctions non membres >> sont
 modifies cross instances. Pour cela, utiliser static.
 
 PENSER A METTRE UN ";" A LA FIN DE SA CLASE
+
+<< et >> : operateurs de redirection de flux
+
+We can call a class without keeping it in an instance, so the constructor,
+things in between like if there are paramters or else and destructor are called
+in a row
