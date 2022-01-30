@@ -1,5 +1,9 @@
 C++98
 
+FLOATS
+when you're defining how close is close enough, you need to talk about how many
+significant digits you want to match
+
 Construcors
 Quand un constructeur par defaut n'est pas necessaire, car il n'y a pas besoin
 que l'utilisateur y accede, on peut le mettre en privee dans la class.hpp,
