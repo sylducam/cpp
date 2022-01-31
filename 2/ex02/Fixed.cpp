@@ -4,23 +4,28 @@ const int Fixed::_fractional_bits = 8;
 
 Fixed::Fixed(): _raw_bits(0)
 {
+	std::cout << "Default constructor called" << std::endl;
 }
 
 Fixed::Fixed(Fixed const& instance)
 {
+	std::cout << "Copy constructor called" << std::endl;
 	*this = instance;
 }
 
 Fixed::Fixed(const int i): _raw_bits(i << this->_fractional_bits)
 {
+	std::cout << "Int constructor called" << std::endl;
 }
 
 Fixed::Fixed(const float f): _raw_bits((int)roundf(f * (1 << this->_fractional_bits)))
 {
+	std::cout << "Float constructor called" << std::endl;
 }
 
 Fixed::~Fixed()
 {
+	std::cout << "Destructor called" << std::endl;
 }
 
 Fixed& Fixed::operator=(Fixed const& instance)
