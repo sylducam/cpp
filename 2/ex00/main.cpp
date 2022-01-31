@@ -11,6 +11,14 @@ int main(void)
 	std::cout << a.getRawBits() << std::endl;
 	std::cout << b.getRawBits() << std::endl;
 	std::cout << c.getRawBits() << std::endl;
-
+	
+/* added to subject's main, to test the function setRawBits
+	a.setRawBits(1);
+	b.setRawBits(2);
+	c.setRawBits(3);
+	std::cout << a.getRawBits() << std::endl;
+	std::cout << b.getRawBits() << std::endl;
+	std::cout << c.getRawBits() << std::endl;
+*/
 	return (0);
 }
