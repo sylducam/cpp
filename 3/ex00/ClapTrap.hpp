@@ -35,6 +35,6 @@ class ClapTrap
 		int getAttackDamage() const;
 };
 
-std::ostream &operator<<(std::ostream &outputFile, ClapTrap const &ct);
+std::ostream &operator<<(std::ostream &output_file, ClapTrap const &ct);
 
 #endif

@@ -2,88 +2,96 @@
 
 const int Fixed::_fractional_bits = 8;
 
-Fixed::Fixed(): _raw_bits(0) {}
+Fixed::Fixed(): _raw_bits(0)
+{
+}
 
-Fixed::Fixed(Fixed const &instance)
+Fixed::Fixed(Fixed const& instance)
 {
 	*this = instance;
 }
 
-Fixed::Fixed(const int i): _raw_bits(i << this->_fractional_bits) {}
+Fixed::Fixed(const int i): _raw_bits(i << this->_fractional_bits)
+{
+}
 
-Fixed::Fixed(const float f): _raw_bits((int)roundf(f * (1 << this->_fractional_bits))) {}
+Fixed::Fixed(const float f): _raw_bits((int)roundf(f * (1 << this->_fractional_bits)))
+{
+}
 
-Fixed::~Fixed() {}
+Fixed::~Fixed()
+{
+}
 
-Fixed &Fixed::operator=(Fixed const &instance)
+Fixed& Fixed::operator=(Fixed const& instance)
 {
 	this->_raw_bits = instance.getRawBits();
 	return (*this);
 }
 
-// Add
-Fixed Fixed::operator+(Fixed const &instance)
+// Addition
+Fixed Fixed::operator+(Fixed const& instance)
 {
 	return (this->toFloat() + instance.toFloat());
 }
 
-// Substract
-Fixed Fixed::operator-(Fixed const &instance)
+// Substraction
+Fixed Fixed::operator-(Fixed const& instance)
 {
 	return (this->toFloat() - instance.toFloat());
 }
 
-// Multiply
-Fixed Fixed::operator*(Fixed const &instance)
+// Multiplication
+Fixed Fixed::operator*(Fixed const& instance)
 {
 	return (this->toFloat() * instance.toFloat());
 }
 
-// Divide
-Fixed Fixed::operator/(Fixed const &instance)
+// Division
+Fixed Fixed::operator/(Fixed const& instance)
 {
 	return (this->toFloat() / instance.toFloat());
 }
 
-bool Fixed::operator>(Fixed const &instance) const
+bool Fixed::operator>(Fixed const& instance) const
 {
 	return (this->getRawBits() > instance.getRawBits());
 }
 
-bool Fixed::operator>=(Fixed const &instance) const
+bool Fixed::operator>=(Fixed const& instance) const
 {
 	return (this->getRawBits() >= instance.getRawBits());
 }
 
-bool Fixed::operator<(Fixed const &instance) const
+bool Fixed::operator<(Fixed const& instance) const
 {
 	return (this->getRawBits() < instance.getRawBits());
 }
 
-bool Fixed::operator<=(Fixed const &instance) const
+bool Fixed::operator<=(Fixed const& instance) const
 {
 	return (this->getRawBits() <= instance.getRawBits());
 }
 
-bool Fixed::operator==(Fixed const &instance) const
+bool Fixed::operator==(Fixed const& instance) const
 {
 	return (this->getRawBits() == instance.getRawBits());
 }
 
-bool Fixed::operator!=(Fixed const &instance) const
+bool Fixed::operator!=(Fixed const& instance) const
 {
 	return (this->getRawBits() != instance.getRawBits());
 }
 
 // Pre-Incrementation
-Fixed &Fixed::operator++(void)
+Fixed& Fixed::operator++(void)
 {
 	this->_raw_bits++;
 	return (*this);
 }
 
 // Pre-Decrementation
-Fixed &Fixed::operator--(void)
+Fixed& Fixed::operator--(void)
 {
 	this->_raw_bits--;
 	return (*this);
@@ -105,30 +113,30 @@ Fixed Fixed::operator--(int)
 	return (result);
 }
 
-// Return the lowest
-Fixed const &Fixed::min(Fixed const &value1, Fixed const &value2)
+// Returns the lowest
+Fixed const& Fixed::min(Fixed const& value1, Fixed const& value2)
 {
 	if (value1 < value2)
 		return (value1);
 	return (value2);
 }
 
-// Return the greatest
-Fixed const &Fixed::max(Fixed const &value1, Fixed const &value2)
+// Returns the highest
+Fixed const& Fixed::max(Fixed const& value1, Fixed const& value2)
 {
 	if (value1 > value2)
 		return (value1);
 	return (value2);
 }
 
-// Convert fixed-point to float
+// Converts fixed-point to float
 // 1 << fractional_bits == 2^(fractional_bits)
 float Fixed::toFloat(void) const
 {
 	return ((float)this->_raw_bits / (float)(1 << this->_fractional_bits));
 }
 
-// Convert fixed-point to int
+// Converts fixed-point to int
 // Move 8 bits to right
 int Fixed::toInt(void) const
 {
@@ -145,9 +153,9 @@ void Fixed::setRawBits(int const raw)
 	this->_raw_bits = raw;
 }
 
-// When print this class in std::cout, call toFloat and return it, in good format
-std::ostream &operator<<(std::ostream &outputFile, Fixed const &i)
+// Calls toFloat and returns it in the right format to be printed
+std::ostream& operator<<(std::ostream& output_file, Fixed const& i)
 {
-	outputFile << i.toFloat();
-	return (outputFile);
+	output_file << i.toFloat();
+	return (output_file);
 }

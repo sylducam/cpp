@@ -26,6 +26,6 @@ class Fixed
 		int		toInt(void) const;
 };
 
-std::ostream &operator<<(std::ostream& outputFile, Fixed const& i);
+std::ostream &operator<<(std::ostream& output_file, Fixed const& i);
 
 #endif

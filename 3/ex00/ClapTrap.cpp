@@ -105,11 +105,11 @@ int ClapTrap::getAttackDamage() const
 	return (this->_attackDamage);
 }
 
-std::ostream &operator<<(std::ostream &outputFile, ClapTrap const &ct)
+std::ostream &operator<<(std::ostream &output_file, ClapTrap const &ct)
 {
-	outputFile	<< ct.getName()<< " > "
+	output_file	<< ct.getName()<< " > "
 				<< ct.getHitPoints() << " hp | "
 				<< ct.getEnergyPoints() << " energy | "
 				<< ct.getAttackDamage() << " attack damage";
-	return outputFile;
+	return output_file;
 }

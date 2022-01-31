@@ -68,8 +68,8 @@ int Fixed::toInt(void) const
 }
 
 // Calls toFloat and returns it in the right format to be printed
-std::ostream &operator<<(std::ostream &outputFile, Fixed const &i)
+std::ostream &operator<<(std::ostream &output_file, Fixed const &i)
 {
-	outputFile << i.toFloat();
-	return (outputFile);
+	output_file << i.toFloat();
+	return (output_file);
 }
