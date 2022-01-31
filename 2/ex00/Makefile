@@ -1,4 +1,4 @@
-NAME		= 	canonical
+NAME		= 	exe_canonical
 
 SRCS		=	$(wildcard *.cpp)
 

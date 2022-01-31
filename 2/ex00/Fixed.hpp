@@ -6,18 +6,19 @@
 
 class Fixed
 {
+	private:
+
+		static int const _fractional_bits;
+		int _raw_bits;
+	
 	public:
+
 		Fixed();
 		Fixed(Fixed const &instance);
 		~Fixed();
-		int getRawBits() const;
-		void setRawBits(int const raw);
-		Fixed &operator=(Fixed const &instance);
-
-	private:
-		static int const _fractional_bits;
-		int _rawBits;
-
+		int		getRawBits() const;
+		void	setRawBits(int const raw);
+		Fixed	&operator=(Fixed const& instance);
 };
 
 #endif
