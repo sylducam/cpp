@@ -17,11 +17,11 @@ class Fixed
 		static const Fixed& min(Fixed const& value1, Fixed const& value2);
 		static const Fixed& max(Fixed const& value1, Fixed const& value2);
 
-		Fixed();
+		Fixed(void);
 		Fixed(const float f);
 		Fixed(const int i);
 		Fixed(Fixed const& instance);
-		~Fixed();
+		~Fixed(void);
 
 		Fixed&	operator=(Fixed const& instance);
 		Fixed	operator+(Fixed const& instance);
@@ -45,7 +45,7 @@ class Fixed
 		float	toFloat(void) const;
 		int		toInt(void) const;
 
-		int		getRawBits() const;
+		int		getRawBits(void) const;
 		void	setRawBits(int const raw);};
 
 std::ostream&	operator<<(std::ostream& output_file, Fixed const& i);

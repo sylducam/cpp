@@ -1,4 +1,4 @@
-NAME		= 	exe_fixed_point
+NAME		= 	exe_fixed_point_full
 
 SRCS		=	$(wildcard *.cpp)
 
