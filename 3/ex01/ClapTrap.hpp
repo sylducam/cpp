@@ -7,7 +7,7 @@ class ClapTrap
 {
 	protected:
 
-		static int	 	hitpointsDefault;
+		static int	 	hitPointsDefault;
 		static int	 	energyPointsDefault;
 		static int	 	attackDamageDefault;
 

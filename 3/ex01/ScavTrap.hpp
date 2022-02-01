@@ -7,7 +7,7 @@ class ScavTrap : public ClapTrap
 {
 	private:
 	
-		static int _hitpointsDefault;
+		static int _hitPointsDefault;
 		static int _energyPointsDefault;
 		static int _attackDamageDefault;
 	

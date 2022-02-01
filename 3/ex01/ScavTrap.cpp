@@ -1,13 +1,13 @@
 #include "ScavTrap.hpp"
 
-int ScavTrap::_hitpointsDefault = 100;
+int ScavTrap::_hitPointsDefault = 100;
 int ScavTrap::_energyPointsDefault = 50;
 int ScavTrap::_attackDamageDefault = 20;
 
 ScavTrap::ScavTrap(void) : ClapTrap()
 {
 	std::cout << "Create ScavTrap '" << this->getName() << "'." << std::endl;
-	this->hitPoints = this->_hitpointsDefault;
+	this->hitPoints = this->_hitPointsDefault;
 	this->energyPoints = this->_energyPointsDefault;
 	this->attackDamage = this->_attackDamageDefault;
 }
@@ -15,7 +15,7 @@ ScavTrap::ScavTrap(void) : ClapTrap()
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
 	std::cout << "Create ScavTrap '" << this->getName() << "'." << std::endl;
-	this->hitPoints = this->_hitpointsDefault;
+	this->hitPoints = this->_hitPointsDefault;
 	this->energyPoints = this->_energyPointsDefault;
 	this->attackDamage = this->_attackDamageDefault;
 }
@@ -41,7 +41,7 @@ ScavTrap::~ScavTrap(void)
 
 void ScavTrap::guardGate(void)
 {
-	std::cout << this->getName() << " enter in Gate keeper mode." << std::endl;
+	std::cout << this->getName() << " enters Gate keeper mode." << std::endl;
 }
 
 void ScavTrap::attack(const std::string &target) 
@@ -49,6 +49,6 @@ void ScavTrap::attack(const std::string &target)
 	if (!this->hasEnoughEnergy())
 		return;
 	--this->energyPoints;
-	std::cout << "[ATTACK] ScavTrap " << this->name << " attacks " << target << ", causing " << this->attackDamage << " points of damage!" << std::endl;
+	std::cout << "[ATTACK] ScavTrap " << this->name << " attacks " << target << ", causing " << this->attackDamage << " damage points!" << std::endl;
 }
 
