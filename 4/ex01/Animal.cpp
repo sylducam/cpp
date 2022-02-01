@@ -1,6 +1,6 @@
 #include "Animal.hpp"
 
-Animal::Animal()
+Animal::Animal(void)
 {
 	std::cout << "Animal default created." << std::endl;
 }
@@ -21,17 +21,17 @@ Animal& Animal::operator=(Animal const &instance)
 	return (*this);
 }
 
-Animal::~Animal() 
+Animal::~Animal(void) 
 {
 	std::cout << "Animal " << name <<  " destroyed." << std::endl;
 }
 
-void Animal::makeSound() const
+void Animal::makeSound(void) const
 {
 	std::cout << "Default Animal Sound" << std::endl;
 }
 
-std::string Animal::getType() const
+std::string Animal::getType(void) const
 {
 	return (this->name);
 }

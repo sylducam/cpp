@@ -17,12 +17,12 @@ static std::string getRandomChars(size_t length)
 	return (out);
 }
 
-Brain::Brain()
+Brain::Brain(void)
 {
 	for (int i = 0; i < 100; i++)
 	{
-		this->ideas[i] = getRandomChars(1000);
-		//std::cout << this->ideas[i] << std::endl;
+		this->_ideas[i] = getRandomChars(1000);
+		//std::cout << this->_ideas[i] << std::endl;
 	}
 	std::cout << "Bain created." << std::endl;
 }
@@ -37,9 +37,9 @@ Brain::~Brain(void)
 	std::cout << "Bain destroyed." << std::endl;
 }
 
-void Brain::operator=(Brain const &instance)
+void Brain::operator=(Brain const& instance)
 {
 	for(int i = 0; i < 100; i++)
-		this->ideas[i] = instance.ideas[i];
+		this->_ideas[i] = instance._ideas[i];
 }
 

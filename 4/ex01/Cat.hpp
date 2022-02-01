@@ -6,16 +6,19 @@
 
 class Cat : public Animal
 {
-	public:
-		Cat();
-		Cat(Cat const& instance);
-		Cat &operator=(Cat const &instance);
-		~Cat();
-
-		void virtual makeSound() const;
-		Brain *getBrain() const;
 	private:
-		Brain* brain;
+
+		Brain* _brain;
+
+	public:
+
+		Cat(void);
+		Cat(Cat const& instance);
+		Cat& operator=(Cat const& instance);
+		~Cat(void);
+
+		void virtual makeSound(void) const;
+		Brain *getBrain(void) const;
 };
 
 #endif

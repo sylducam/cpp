@@ -1,9 +1,9 @@
 #include "Dog.hpp"
 
-Dog::Dog() : Animal("Dog")
+Dog::Dog(void) : Animal("Dog")
 {
 	std::cout << "Create " << this->getType() << std::endl;
-	this->brain = new Brain();
+	this->_brain = new Brain();
 }
 
 Dog::Dog(Dog const &instance)
@@ -11,19 +11,19 @@ Dog::Dog(Dog const &instance)
 	*this = instance;
 }
 
-Dog& Dog::operator=(Dog const &instance) 
+Dog& Dog::operator=(Dog const& instance) 
 {
 	this->name = instance.getType();
 	return (*this);
 }
 
-Dog::~Dog() 
+Dog::~Dog(void) 
 {
-	delete this->brain;
+	delete this->_brain;
 	std::cout << "Destroy " << this->getType() << std::endl;
 }
 
-void Dog::makeSound() const
+void Dog::makeSound(void) const
 {
 	std::cout << "Woof" << std::endl;
 }
