@@ -2,7 +2,7 @@
 
 Dog::Dog(void) : Animal("Dog")
 {
-	std::cout << "Create " << this->getType() << std::endl;
+	std::cout << "Hello "<< this->getType() << std::endl;
 }
 
 Dog::Dog(Dog const& instance)
@@ -18,7 +18,7 @@ Dog& Dog::operator=(Dog const& instance)
 
 Dog::~Dog(void) 
 {
-	std::cout << "Destroy " << this->getType() << std::endl;
+	std::cout << this->getType() << " burried" << std::endl;
 }
 
 void Dog::makeSound() const

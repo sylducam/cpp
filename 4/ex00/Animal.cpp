@@ -2,12 +2,12 @@
 
 Animal::Animal(void)
 {
-	std::cout << "Animal created." << std::endl;
+	std::cout << "An animal is born" << std::endl;
 }
 
 Animal::Animal(std::string name): name(name)
 {
-	std::cout << name << " created." << std::endl;
+	std::cout << "Hello " << name << std::endl;
 }
 
 Animal::Animal(Animal const& instance)
@@ -23,7 +23,7 @@ Animal& Animal::operator=(Animal const& instance)
 
 Animal::~Animal(void) 
 {
-	std::cout << name <<  " destroyed." << std::endl;
+	std::cout << "Goodbye specimen " << name << std::endl;
 }
 
 void Animal::makeSound(void) const

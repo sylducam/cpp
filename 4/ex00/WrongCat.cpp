@@ -1,8 +1,8 @@
 #include "WrongCat.hpp"
 
-WrongCat::WrongCat(void) : WrongAnimal("WrongCat")
+WrongCat::WrongCat(void) : WrongAnimal("DefinitelyNotACat")
 {
-	std::cout << "Create " << this->getType() << std::endl;
+	std::cout << "A disturbing cat alike " << this->getType() << " is born" << std::endl;
 }
 
 WrongCat::WrongCat(WrongCat const& instance)
@@ -18,7 +18,7 @@ WrongCat& WrongCat::operator=(WrongCat const& instance)
 
 WrongCat::~WrongCat(void) 
 {
-	std::cout << "Destroy " << this->getType() << std::endl;
+	std::cout << "Goodbye " << this->getType() << std::endl;
 }
 
 void WrongCat::makeSound() const
