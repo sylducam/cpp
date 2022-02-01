@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Brain.cpp                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: tglory <tglory@student.42lyon.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/28 00:29:23 by tglory            #+#    #+#             */
-/*   Updated: 2022/01/28 15:33:31 by tglory           ###   ########lyon.fr   */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "Brain.hpp"
 #include <cstdlib>
 
@@ -32,10 +20,10 @@ static std::string getRandomChars(size_t length)
 
 Brain::Brain()
 {
-	for (int i = 0; i < 100; i++)
+	for (int i = 0; i < 10; i++)
 	{
-		this->ideas[i] = getRandomChars(1000);
-		//std::cout << this->ideas[i] << std::endl;
+		this->ideas[i] = getRandomChars(20);
+		std::cout << this->ideas[i] << std::endl;
 	}
 }
 

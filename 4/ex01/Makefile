@@ -1,26 +1,25 @@
-CC				=	clang++
-CFLAGS			=	-Wall -Wextra -Werror -std=c++98
-NAME			=	$(notdir $(shell pwd))
-INCLUDES		=	$(wildcard *.hpp) $(wildcard *.h)
-SRCS			=	$(wildcard *.cpp)
+NAME		= 	exe_thoughts
 
-OBJS_DIR		=	objs
-OBJS			=	$(SRCS:%.cpp=$(OBJS_DIR)/%.o)
+SRCS		=	$(wildcard *.cpp)
 
-all: $(NAME)
+HEADER		=	$(wildcard *.hpp)
 
-$(OBJS_DIR)/%.o: %.cpp $(INCLUDES)
-	mkdir -p $(dir $@) && $(CC) $(CFLAGS) -c -o $@ $<
+COMP		= 	clang++
 
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+RM			= 	rm -rf
 
-clean :
-	rm -f $(OBJS)
+CFLAGS		= 	-Wall -Wextra -Werror -std=c++98
 
-fclean : clean
-	rm -rf $(NAME) $(OBJS_DIR)
+all			:	$(NAME)
 
-re: fclean all
+$(NAME)		:	$(SRCS) $(HEADER)
+				$(COMP) $(CFLAGS) $(SRCS) -o $(NAME) -Iinclude
 
-.PHONY: all clean fclean re
+clean		:
+				$(RM) $(NAME)
+
+fclean		:	clean
+
+re			:	fclean all
+
+.PHONY		:	all clean fclean re
