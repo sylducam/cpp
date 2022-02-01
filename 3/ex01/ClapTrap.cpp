@@ -52,12 +52,12 @@ void ClapTrap::takeDamage(unsigned int amount)
 	else if (amount >= this->hitPoints)
 	{
 		this->hitPoints = 0;
-		std::cout << "[HIT] " << this->name << " looses " << amount << " hit points. He die." << std::endl;
+		std::cout << "[HIT] " << this->name << " loses " << amount << " hit points. He die." << std::endl;
 	}
 	else
 	{
 		this->hitPoints -= amount;
-		std::cout << "[HIT] " << this->name << " looses " << amount << " hit points. He now has " << this->hitPoints << " hit points." << std::endl;
+		std::cout << "[HIT] " << this->name << " loses " << amount << " hit points. He now has " << this->hitPoints << " hit points." << std::endl;
 	}
 }
 
