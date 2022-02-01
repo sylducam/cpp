@@ -17,7 +17,7 @@ ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(_hitPointsDefault
 ClapTrap::ClapTrap(ClapTrap const& instance)
 {
 	*this = instance;
-	std::cout << "Create cloned ClapTrap '" << this->_name << "'." << std::endl;
+	std::cout << "Create cloned ClapTrap from '" << this->_name << "'." << std::endl;
 }
 
 ClapTrap &ClapTrap::operator=(ClapTrap const &instance)
@@ -26,7 +26,7 @@ ClapTrap &ClapTrap::operator=(ClapTrap const &instance)
 	this->_hitPoints = instance.getHitPoints();
 	this->_energyPoints = instance.getEnergyPoints();
 	this->_attackDamage = instance.getAttackDamage();
-	std::cout << "Create cloned operator ClapTrap '" << this->_name << "'." << std::endl;
+	std::cout << "Operator function called to clone '" << this->_name << "'." << std::endl;
 	return (*this);
 }
 
@@ -40,24 +40,24 @@ void ClapTrap::attack(const std::string &target)
 	if (!this->hasEnoughEnergy())
 		return;
 	--this->_energyPoints;
-	std::cout << "[ATTACK] " << this->_name << " attacks " << target << ", causing " << this->_attackDamage << " points of damage!" << std::endl;
+	std::cout << "[ATTACK] " << this->_name << " attacks " << target << ", causing " << this->_attackDamage << " damage points!" << std::endl;
 }
 
 void ClapTrap::takeDamage(unsigned int amount) 
 {
 	if (this->_hitPoints == 0)
 	{
-		std::cout << "[HITTED] " << this->_name << " is already dead. Unable to attack a corpse." << std::endl;
+		std::cout << "[HIT] " << this->_name << " is already dead." << std::endl;
 	}
 	else if (amount >= this->_hitPoints)
 	{
 		this->_hitPoints = 0;
-		std::cout << "[HITTED] " << this->_name << " loose " << amount << " hit points. He die." << std::endl;
+		std::cout << "[HIT] " << this->_name << " looses " << amount << " hit points. He die." << std::endl;
 	}
 	else
 	{
 		this->_hitPoints -= amount;
-		std::cout << "[HITTED] " << this->_name << " loose " << amount << " hit points. He had now " << this->_hitPoints << " hit point." << std::endl;
+		std::cout << "[HIT] " << this->_name << " looses " << amount << " hit points. He now has " << this->_hitPoints << " hit points." << std::endl;
 	}
 }
 
@@ -67,22 +67,22 @@ void ClapTrap::beRepaired(unsigned int amount)
 		return;
 	--this->_energyPoints;
 	this->_hitPoints += amount;
-	std::cout << "[REPAIRED] " << this->_name << " repair " << amount << " hit points. He had now " << this->_hitPoints << " hit point." << std::endl;
+	std::cout << "[REPAIRED] " << this->_name << " repairs " << amount << " hit points. He now has " << this->_hitPoints << " hit points." << std::endl;
 }
 
 bool ClapTrap::hasEnoughEnergy() 
 {
-	bool enoughEnergy;
-
 	if (this->_hitPoints <= 0)
 	{
 		std::cout << "[ERROR] " << this->_name << " is dead, he can't do anything." << std::endl;
 		return (false);
 	}
-	enoughEnergy = this->_energyPoints > 0;
-	if (!enoughEnergy)
-		std::cout << "[ERROR] " << this->_name << " has not enough energy ..." << std::endl;
-	return (enoughEnergy);
+	if (this->_energyPoints > 0)
+		return (true);
+	else
+		std::cout << "[ERROR] " << this->_name << " has not enough energy..." << std::endl;
+		return (false);
+	return (true);
 }
 
 std::string ClapTrap::getName() const
@@ -105,11 +105,11 @@ int ClapTrap::getAttackDamage() const
 	return (this->_attackDamage);
 }
 
-std::ostream &operator<<(std::ostream &output_file, ClapTrap const &ct)
+std::ostream &operator<<(std::ostream &output_file, ClapTrap const &clap_trap)
 {
-	output_file	<< ct.getName()<< " > "
-				<< ct.getHitPoints() << " hp | "
-				<< ct.getEnergyPoints() << " energy | "
-				<< ct.getAttackDamage() << " attack damage";
+	output_file	<< clap_trap.getName() << " > "
+				<< clap_trap.getHitPoints() << " hp | "
+				<< clap_trap.getEnergyPoints() << " energy | "
+				<< clap_trap.getAttackDamage() << " attack damage";
 	return output_file;
 }

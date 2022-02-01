@@ -1,4 +1,4 @@
-NAME		= 	$(notdir $(shell pwd))
+NAME		= 	exe_claptrap
 
 SRCS		=	$(wildcard *.cpp)
 
