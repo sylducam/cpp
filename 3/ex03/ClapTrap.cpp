@@ -20,7 +20,7 @@ ClapTrap::ClapTrap(ClapTrap const& instance)
 	std::cout << "Create cloned ClapTrap from '" << this->name << "'." << std::endl;
 }
 
-ClapTrap &ClapTrap::operator=(ClapTrap const &instance)
+ClapTrap& ClapTrap::operator=(ClapTrap const& instance)
 {
 	this->name = instance.getName();
 	this->hitPoints = instance.getHitPoints();
@@ -35,7 +35,7 @@ ClapTrap::~ClapTrap(void)
 	std::cout << this->name << " was destroyed." << std::endl;
 }
 
-void ClapTrap::attack(const std::string &target) 
+void ClapTrap::attack(const std::string& target) 
 {
 	if (!this->hasEnoughEnergy())
 		return;
@@ -105,7 +105,7 @@ int ClapTrap::getAttackDamage() const
 	return (this->attackDamage);
 }
 
-std::ostream &operator<<(std::ostream &output_file, ClapTrap const &clap_trap)
+std::ostream& operator<<(std::ostream& output_file, ClapTrap const& clap_trap)
 {
 	output_file	<< clap_trap.getName() << " > "
 				<< clap_trap.getHitPoints() << " hp | "

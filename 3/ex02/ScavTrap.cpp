@@ -20,12 +20,12 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 	this->attackDamage = this->_attackDamageDefault;
 }
 
-ScavTrap::ScavTrap(ScavTrap const &instance) : ClapTrap(instance)
+ScavTrap::ScavTrap(ScavTrap const& instance) : ClapTrap(instance)
 {
 	std::cout << "Create cloned ScavTrap '" << this->getName() << "'." << std::endl;
 }
 
-ScavTrap &ScavTrap::operator=(ScavTrap const &instance)
+ScavTrap& ScavTrap::operator=(ScavTrap const& instance)
 {
 	this->name = instance.getName();
 	this->hitPoints = instance.getHitPoints();
@@ -44,7 +44,7 @@ void ScavTrap::guardGate(void)
 	std::cout << this->getName() << " enters Gate keeper mode." << std::endl;
 }
 
-void ScavTrap::attack(const std::string &target) 
+void ScavTrap::attack(const std::string& target) 
 {
 	if (!this->hasEnoughEnergy())
 		return;

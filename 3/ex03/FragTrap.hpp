@@ -3,10 +3,6 @@
 
 # include "ClapTrap.hpp"
 
-# define HIT_POINT 100
-# define ENERGY_POINT 100
-# define ATTACK_DAMAGE 30
-
 class FragTrap : public virtual ClapTrap
 {
 	protected:
@@ -20,7 +16,7 @@ class FragTrap : public virtual ClapTrap
 		FragTrap();
 		FragTrap(std::string name);
 		FragTrap(FragTrap const& instance);
-		FragTrap &operator=(FragTrap const &instance);
+		FragTrap& operator=(FragTrap const& instance);
 		~FragTrap();
 
 		void highFivesGuys(void);

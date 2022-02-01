@@ -20,12 +20,12 @@ FragTrap::FragTrap(std::string name)  : ClapTrap(name)
 	this->attackDamage = this->_attackDamageDefault;
 }
 
-FragTrap::FragTrap(FragTrap const &instance)  : ClapTrap(instance)
+FragTrap::FragTrap(FragTrap const& instance)  : ClapTrap(instance)
 {
 	std::cout << "Create cloned FragTrap '" << this->getName() << "'." << std::endl;
 }
 
-FragTrap &FragTrap::operator=(FragTrap const &instance)
+FragTrap& FragTrap::operator=(FragTrap const& instance)
 {
 	this->name = instance.getName();
 	this->hitPoints = instance.getHitPoints();

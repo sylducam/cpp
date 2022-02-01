@@ -22,12 +22,12 @@ DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), Scav
 	this->attackDamage = FragTrap::attackDamageDefault;
 }
 
-DiamondTrap::DiamondTrap(DiamondTrap const &instance) : ScavTrap(instance)
+DiamondTrap::DiamondTrap(DiamondTrap const& instance) : ScavTrap(instance)
 {
 	std::cout << "Create cloned DiamondTrap '" << this->getName() << "'." << std::endl;
 }
 
-DiamondTrap &DiamondTrap::operator=(DiamondTrap const &instance)
+DiamondTrap& DiamondTrap::operator=(DiamondTrap const& instance)
 {
 	this->name = instance.getName();
 	this->hitPoints = instance.getHitPoints();
@@ -47,7 +47,7 @@ void DiamondTrap::whoAmI()
 				<< " but you can call me ClapTrap " << ClapTrap::getName() << "." << std::endl;
 }
 
-void DiamondTrap::attack(const std::string &target)
+void DiamondTrap::attack(const std::string& target)
 {
 	ScavTrap::attack(target);
 }
