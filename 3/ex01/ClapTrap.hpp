@@ -30,12 +30,12 @@ class ClapTrap
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);
 
-		std::string getName() const; 
-		int getHitPoints() const;
-		int getEnergyPoints() const;
-		int getAttackDamage() const;
+		std::string	getName(void) const; 
+		int			getHitPoints(void) const;
+		int			getEnergyPoints(void) const;
+		int 		getAttackDamage(void) const;
 };
 
-std::ostream& operator<<(std::ostream& outputFile, ClapTrap const& ct);
+std::ostream& operator<<(std::ostream& output_file, ClapTrap const& clap_trap);
 
 #endif
