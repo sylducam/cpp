@@ -39,6 +39,14 @@ FragTrap::~FragTrap()
 	std::cout << "FragTrap " << this->getName() << " was destroyed." << std::endl;
 }
 
+void FragTrap::attack(const std::string& target) 
+{
+	if (!this->hasEnoughEnergy())
+		return;
+	--this->energyPoints;
+	std::cout << "[ATTACK] FragTrap " << this->name << " attacks " << target << ", causing " << this->attackDamage << " damage points!" << std::endl;
+}
+
 void FragTrap::highFivesGuys(void)
 {
 	std::cout << "     _.-._" << std::endl;
