@@ -31,7 +31,7 @@ int main(void)
 	dog->makeSound();
 	animal->makeSound(); // without fonction override by child class
 	wrongCat->makeSound(); // without virtual
-	wrongCat2->makeSound(); // without virtual but type is not the inherits one
+	wrongCat2->makeSound(); // without virtual but type is not the inherited one
 	wrongAnimal->makeSound(); // without fonction override by child class
 	animal2->makeSound();
 	wrongAnimal2->makeSound();
