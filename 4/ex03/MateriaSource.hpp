@@ -1,16 +1,9 @@
 #ifndef MATERIASOURCE_HPP
 # define MATERIASOURCE_HPP
 
-# include "Materia.hpp"
+# include "AMateria.hpp"
+# include "IMateriaSource.hpp"
 # define MAX_MATERIA 4
-
-class IMateriaSource
-{
-	public:
-		virtual ~IMateriaSource() {}
-		virtual void learnMateria(AMateria*) = 0;
-		virtual AMateria* createMateria(std::string const & type) = 0;
-};
 
 class MateriaSource : public IMateriaSource
 {
@@ -25,8 +18,6 @@ class MateriaSource : public IMateriaSource
 		AMateria *materias[MAX_MATERIA];
 
 		void initMateriaStorage();
-
-
 };
 
 #endif
