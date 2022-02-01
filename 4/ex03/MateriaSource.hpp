@@ -26,6 +26,7 @@ class MateriaSource : public IMateriaSource
 
 		void initMateriaStorage();
 
+
 };
 
 #endif
