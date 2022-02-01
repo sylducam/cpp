@@ -1,4 +1,4 @@
-NAME		= 	exe_diamond
+NAME		= 	exe_diamond_trap
 
 SRCS		=	$(wildcard *.cpp)
 
