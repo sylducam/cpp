@@ -1,17 +1,5 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   MateriaSource.cpp                                  :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: tglory <tglory@student.42lyon.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/29 19:53:40 by tglory            #+#    #+#             */
-/*   Updated: 2022/01/31 15:10:27 by tglory           ###   ########lyon.fr   */
-/*                                                                            */
-/* ************************************************************************** */
-
-# include "Materia.hpp"
-# include "MateriaSource.hpp"
+#include "Materia.hpp"
+#include "MateriaSource.hpp"
 
 MateriaSource::MateriaSource()
 {
