@@ -1,20 +1,15 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat(void) : _name("nameless"), _grade(150) {}
+Bureaucrat::Bureaucrat(void) : _name("Boris"), _grade(150) {}
 
-Bureaucrat::Bureaucrat(std::string name) : _name(name), _grade(150) {}
-
-Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade) {}
-
-Bureaucrat::Bureaucrat(Bureaucrat const& instance)
+Bureaucrat::Bureaucrat(Bureaucrat const& instance) : _name(instance.getName()), _grade(instance.getGrade())
 {
 	*this = instance;
 }
 
 Bureaucrat& Bureaucrat::operator=(Bureaucrat const& instance)
 {
-	this->_name = instance.getName();
-	this->_grade = instance.getGrade();
+	(void)instance;
 	return *this;
 }
 

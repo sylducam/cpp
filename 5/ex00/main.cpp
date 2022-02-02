@@ -2,7 +2,7 @@
 
 int main()
 {
-	Bureaucrat *bureaucrat = new Bureaucrat("Boris");
+	Bureaucrat *bureaucrat = new Bureaucrat;
 
 	std::cout << *bureaucrat << std::endl;
 	try
