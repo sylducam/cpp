@@ -1,6 +1,6 @@
 #include "Cat.hpp"
 
-Cat::Cat(void) : Animal("Cat")
+Cat::Cat(void) : AAnimal("Cat")
 {
 	this->_brain = new Brain();
 	std::cout << "Create " << this->getType() << std::endl;

@@ -3,10 +3,10 @@
 
 int main(void)
 {
-	const Animal* dog = new Dog();
-	const Animal* cat = new Cat();
-	// const Animal* animal = new Animal();
-	// Animal animal2;
+	const AAnimal* dog = new Dog();
+	const AAnimal* cat = new Cat();
+	// const AAnimal* animal = new AAnimal();
+	// AAnimal animal2;
 
 	std::cout << std::endl;
 

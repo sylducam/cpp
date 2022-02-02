@@ -1,6 +1,6 @@
 #include "Dog.hpp"
 
-Dog::Dog(void) : Animal("Dog")
+Dog::Dog(void) : AAnimal("Dog")
 {
 	this->_brain = new Brain();
 	std::cout << "Create " << this->getType() << std::endl;

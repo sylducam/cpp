@@ -19,10 +19,10 @@ static std::string getRandomChars(size_t length)
 
 Brain::Brain(void)
 {
-	for (int i = 0; i < 100; i++)
+	for (int i = 0; i < 10; i++)
 	{
-		this->_ideas[i] = getRandomChars(1000);
-		//std::cout << this->_ideas[i] << std::endl;
+		this->_ideas[i] = getRandomChars(20);
+		std::cout << this->_ideas[i] << std::endl;
 	}
 	std::cout << "Bain created." << std::endl;
 }
