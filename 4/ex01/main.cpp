@@ -19,4 +19,10 @@ int main(void)
 	{
 		delete animals[i];
 	}
+	Animal bill;
+	Animal boule(bill);
+	Brain	sprouitch;
+	Brain	fluf(sprouitch);
+	Brain	sprouft;
+	sprouft = sprouitch;
 }

@@ -2,13 +2,14 @@
 
 Cat::Cat(void) : Animal("Cat")
 {
+	std::cout << "Hello "<< this->getType() << std::endl;
 	this->_brain = new Brain();
-	std::cout << "Create " << this->getType() << std::endl;
 }
 
 Cat::Cat(Cat const &instance)
 {
 	*this = instance;
+	std::cout << "Hello "<< this->getType() << std::endl;
 }
 
 Cat& Cat::operator=(Cat const& instance) 
@@ -20,7 +21,7 @@ Cat& Cat::operator=(Cat const& instance)
 Cat::~Cat(void) 
 {
 	delete this->_brain;
-	std::cout << "Destroy " << this->getType() << std::endl;
+	std::cout << this->getType() << " burried" << std::endl;
 }
 
 void Cat::makeSound() const
