@@ -25,6 +25,69 @@ void mandatoryTest()
 	delete src;
 }
 
+void unequipTest()
+{
+	MateriaSource* src = new MateriaSource();
+
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
+
+	ICharacter* me = new Character("me");
+
+	AMateria* instanceIce;
+	instanceIce = src->createMateria("ice");
+	me->equip(instanceIce);
+
+	AMateria* instanceCure;
+	instanceCure = src->createMateria("cure");
+	me->equip(instanceCure);
+
+	ICharacter* bob = new Character("bob");
+
+	me->use(0, *bob);
+	me->use(1, *bob);
+
+	me->unequip(0);
+	delete instanceIce;
+
+	me->unequip(1);
+	delete instanceCure;
+
+	delete bob;
+	delete me;
+	delete src;
+}
+
+void unequipCustomTest()
+{
+	MateriaSource* src = new MateriaSource();
+
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
+
+	ICharacter* me = new Character("me");
+
+	AMateria* instanceIce;
+	instanceIce = src->createMateria("ice");
+	me->equip(instanceIce);
+
+	AMateria* instanceCure;
+	instanceCure = src->createMateria("cure");
+	me->equip(instanceCure);
+
+	ICharacter* bob = new Character("bob");
+
+	me->use(0, *bob);
+	me->use(1, *bob);
+
+	me->unEquipSafe(0);
+	me->unEquipSafe(1);
+
+	delete bob;
+	delete me;
+	delete src;
+}
+
 void notRegisterTest()
 {
 	MateriaSource* src = new MateriaSource();
@@ -103,7 +166,10 @@ void learnSameClassTest()
 	MateriaSource* src = new MateriaSource();
 
 	src->learnMateria(new Cure());
-	src->learnMateria(new Cure());
+
+	AMateria* tmp = new Cure();
+	src->learnMateria(tmp);
+	delete tmp;
 
 	delete src;
 }
@@ -112,6 +178,10 @@ int main()
 {
 	std::cout << "#####################{mandatoryTest}#####################" << std::endl;
 	mandatoryTest();
+	std::cout << "#####################{unequipTest}#####################" << std::endl;
+	unequipTest();
+	std::cout << "#####################{unequipCustomTest}#####################" << std::endl;
+	unequipCustomTest();
 	std::cout << std::endl << "#####################{notRegisterTest}#####################" << std::endl;
 	notRegisterTest();
 	std::cout << std::endl << "#####################{equipSameInstanceTest}#####################" << std::endl;
