@@ -3,28 +3,44 @@
 /*                                                        :::      ::::::::   */
 /*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tglory <tglory@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: nigoncal <nigoncal@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/02 01:24:12 by tglory            #+#    #+#             */
-/*   Updated: 2022/02/02 03:26:54 by tglory           ###   ########lyon.fr   */
+/*   Created: 2021/11/11 16:11:25 by nigoncal          #+#    #+#             */
+/*   Updated: 2021/11/11 16:11:26 by nigoncal         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRESIDENTIALPARDONFORM_HPP
-# define PRESIDENTIALPARDONFORM_HPP
+#ifndef PRESIDENTIALPARDONFORM_H
+# define PRESIDENTIALPARDONFORM_H
 
-# include "AForm.hpp"
+#include <iostream>
+#include "Form.hpp"
 
-class PresidentialPardonForm : public AForm
+class PresidentialPardonForm : public Form
 {
 	public:
-		PresidentialPardonForm();
 		PresidentialPardonForm(std::string target);
-		PresidentialPardonForm(PresidentialPardonForm const &instance);
-		PresidentialPardonForm &operator=(PresidentialPardonForm const &instance);
+		PresidentialPardonForm(PresidentialPardonForm const &cpy);
 		~PresidentialPardonForm();
+		PresidentialPardonForm &operator=(PresidentialPardonForm const &cpy);
 
-		virtual void execute(Bureaucrat const &executor) const;
+		std::string getTarget() const;
+		void setTarget(std::string target);
+
+		void execute(Bureaucrat const &executor) const;
+
+		class FileErrorException : public std::exception {
+			public:
+				virtual const char* what() const throw ()
+				{
+					return "Error with file.";
+				}
+		};
+
+	private:
+		PresidentialPardonForm();
+
+		std::string _target;
 };
 
 #endif

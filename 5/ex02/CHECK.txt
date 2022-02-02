@@ -1,1 +1,0 @@
-Si Bureaucrat::execute() & AForm::execute check bien tous les deux si le form est signé et executable

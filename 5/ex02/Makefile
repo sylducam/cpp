@@ -1,26 +1,31 @@
-CC				=	clang++
-CFLAGS			=	-Wall -Wextra -Werror -std=c++98
-NAME			=	$(notdir $(shell pwd))
-INCLUDES		=	$(wildcard *.hpp) $(wildcard *.h)
-SRCS			=	$(wildcard *.cpp)
+NAME = Form
+PATH_SRC = ./
+PATH_OBJ = ./
+PATH_INC = ./
 
-OBJS_DIR		=	objs
-OBJS			=	$(SRCS:%.cpp=$(OBJS_DIR)/%.o)
+CXX = clang++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+
+SRC =		Bureaucrat.cpp \
+			Form.cpp \
+			ShrubberyCreationForm.cpp \
+			RobotomyRequestForm.cpp \
+			PresidentialPardonForm.cpp \
+			main.cpp
+
+OBJ = $(addprefix $(PATH_SRC), $(SRC:.cpp=.o))
+
+.PHONY: clean fclean
 
 all: $(NAME)
 
-$(OBJS_DIR)/%.o: %.cpp $(INCLUDES)
-	mkdir -p $(dir $@) && $(CC) $(CFLAGS) -c -o $@ $<
+$(NAME): $(OBJ)
+	$(CXX) $(OBJ) -o $(NAME)
 
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+clean:
+	rm -f $(OBJ)
 
-clean :
-	rm -f $(OBJS)
-
-fclean : clean
-	rm -rf $(NAME) $(OBJS_DIR) *_shrubbery
+fclean: clean
+	rm -f $(NAME)
 
 re: fclean all
-
-.PHONY: all clean fclean re

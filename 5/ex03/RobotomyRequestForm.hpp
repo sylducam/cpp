@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nigoncal <nigoncal@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/11 16:11:36 by nigoncal          #+#    #+#             */
-/*   Updated: 2021/11/11 16:11:37 by nigoncal         ###   ########lyon.fr   */
+/*   Created: 2021/11/11 16:13:26 by nigoncal          #+#    #+#             */
+/*   Updated: 2021/11/11 16:13:27 by nigoncal         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,7 @@ class RobotomyRequestForm : public Form
 		void setTarget(std::string target);
 
 		void execute(Bureaucrat const &executor) const;
-
-		class FileErrorException : public std::exception {
-			public:
-				virtual const char* what() const throw ()
-				{
-					return "Error with file.";
-				}
-		};
+		static Form *newForm(std::string target);
 
 	private:
 		RobotomyRequestForm();

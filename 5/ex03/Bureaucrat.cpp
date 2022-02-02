@@ -5,12 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nigoncal <nigoncal@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/11 16:10:54 by nigoncal          #+#    #+#             */
-/*   Updated: 2021/11/11 16:10:55 by nigoncal         ###   ########lyon.fr   */
+/*   Created: 2021/11/11 16:12:11 by nigoncal          #+#    #+#             */
+/*   Updated: 2021/11/12 13:14:48 by nigoncal         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 Bureaucrat::Bureaucrat()
 {}
@@ -95,3 +96,4 @@ std::ostream &operator<<(std::ostream &out, const Bureaucrat &yo)
 	out << "<" + yo.getName() + ">" << " bureaucrat grade <" << yo.getGrade() << ">";
 	return out;
 }
+

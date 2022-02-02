@@ -5,13 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nigoncal <nigoncal@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/11 16:11:31 by nigoncal          #+#    #+#             */
-/*   Updated: 2021/11/11 16:11:32 by nigoncal         ###   ########lyon.fr   */
+/*   Created: 2021/11/11 16:13:22 by nigoncal          #+#    #+#             */
+/*   Updated: 2021/11/11 16:13:23 by nigoncal         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
 #include <fstream>
+#include "Bureaucrat.hpp"
 
 RobotomyRequestForm::RobotomyRequestForm(std::string target) : Form("RobotomyRequestForm", 72, 45), _target(target) 
 {
@@ -52,4 +53,9 @@ void RobotomyRequestForm::execute(Bureaucrat const &executor) const
 	}
 	else
 		std::cout << "Robimization failed :(" << std::endl;
+}
+
+Form *RobotomyRequestForm::newForm(std::string target)
+{
+	return new RobotomyRequestForm(target);
 }

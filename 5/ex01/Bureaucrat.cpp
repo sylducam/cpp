@@ -3,73 +3,85 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tglory <tglory@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: nigoncal <nigoncal@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/31 15:51:23 by tglory            #+#    #+#             */
-/*   Updated: 2022/02/02 03:17:01 by tglory           ###   ########lyon.fr   */
+/*   Created: 2021/11/11 16:10:27 by nigoncal          #+#    #+#             */
+/*   Updated: 2021/11/12 12:01:44 by nigoncal         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat() : name("nameless"), grade(150) {}
+Bureaucrat::Bureaucrat()
+{}
 
-Bureaucrat::Bureaucrat(std::string name) : name(name), grade(150) {}
-
-Bureaucrat::Bureaucrat(std::string name, int grade) : name(name), grade(grade) {}
-
-Bureaucrat::Bureaucrat(Bureaucrat const &instance)
+Bureaucrat::Bureaucrat(std::string name, int grade)
 {
-	*this = instance;
+	this->_name = name;
+	this->setGrade(grade);
 }
 
-Bureaucrat &Bureaucrat::operator=(Bureaucrat const &instance)
+Bureaucrat::Bureaucrat(Bureaucrat const &cpy)
 {
-	this->name = instance.getName();
-	this->grade = instance.getGrade();
+	this->_name = cpy._name;
+	this->_grade = cpy._grade;
+}
+
+Bureaucrat::~Bureaucrat()
+{}
+
+Bureaucrat &Bureaucrat::operator=(Bureaucrat const &cpy)
+{
+	this->_grade = cpy.getGrade();
+
 	return *this;
 }
 
-Bureaucrat::~Bureaucrat() {}
-
 std::string Bureaucrat::getName() const
 {
-	return this->name;
+	return this->_name;
+}
+
+void Bureaucrat::setName(std::string name)
+{
+	this->_name = name;
 }
 
 int Bureaucrat::getGrade() const
 {
-	return this->grade; 
+	return this->_grade;
 }
 
-void Bureaucrat::upGrade()
+void Bureaucrat::setGrade(int value)
 {
-	if (this->grade <= HIGHEST_RANK)
-		throw Bureaucrat::GradeTooHighException();
-	--this->grade;
+	if (value < 1)
+		throw GradeTooHighException();
+	if (value > 150)
+		throw GradeTooLowException();
+	this->_grade = value;
 }
 
-void Bureaucrat::downGrade()
+void Bureaucrat::increment()
 {
-	if (this->grade >= LOWEST_RANK)
-		throw Bureaucrat::GradeTooLowException();
-	++this->grade;
+	this->setGrade(this->getGrade() - 1 );
+}
+
+void Bureaucrat::decrement()
+{
+	this->setGrade(this->getGrade() + 1 );
 }
 
 void Bureaucrat::signForm(Form &form)
 {
 	try {
 		form.beSigned(*this);
-		std::cout << this->name << " signs form " << form.getName() << "." << std::endl;
-	} catch (Form::FormAlreadySigned &e) {
-		std::cout << this->name << " cannot signs form " << form.getName() << " because the form is already signed." << std::endl;
-	} catch (Form::GradeTooLowException &e) {
-		std::cout << this->name << " cannot signs form " << form.getName() << " because his grade is too low." << std::endl;
+	} catch (std::exception &e) {
+		std::cout << "ERROR: " << e.what() << std::endl;
 	}
 }
 
-std::ostream &operator<<(std::ostream &outputFile, Bureaucrat const &instance)
+std::ostream &operator<<(std::ostream &out, const Bureaucrat &yo)
 {
-	outputFile << instance.getName() << " is lvl " << instance.getGrade() << ".";
-	return outputFile;
+	out << "<" + yo.getName() + ">" << " bureaucrat grade <" << yo.getGrade() << ">";
+	return out;
 }

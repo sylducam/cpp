@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
+/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nigoncal <nigoncal@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/11 16:11:36 by nigoncal          #+#    #+#             */
-/*   Updated: 2021/11/11 16:11:37 by nigoncal         ###   ########lyon.fr   */
+/*   Created: 2021/11/11 16:13:38 by nigoncal          #+#    #+#             */
+/*   Updated: 2021/11/11 16:13:39 by nigoncal         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ROBOTOMYREQUESTFORM_H
-# define ROBOTOMYREQUESTFORM_H
+#ifndef SHRUBBERYCREATIONFORM_H
+# define SHRUBBERYCREATIONFORM_H
 
 #include <iostream>
 #include "Form.hpp"
 
-class RobotomyRequestForm : public Form
+class ShrubberyCreationForm : public Form
 {
 	public:
-		RobotomyRequestForm(std::string target);
-		RobotomyRequestForm(RobotomyRequestForm const &cpy);
-		~RobotomyRequestForm();
-		RobotomyRequestForm &operator=(RobotomyRequestForm const &cpy);
+		ShrubberyCreationForm(std::string target);
+		ShrubberyCreationForm(ShrubberyCreationForm const &cpy);
+		~ShrubberyCreationForm();
+		ShrubberyCreationForm &operator=(ShrubberyCreationForm const &cpy);
 
 		std::string getTarget() const;
 		void setTarget(std::string target);
 
 		void execute(Bureaucrat const &executor) const;
+		static Form *newForm(std::string target);
 
 		class FileErrorException : public std::exception {
 			public:
@@ -38,7 +39,7 @@ class RobotomyRequestForm : public Form
 		};
 
 	private:
-		RobotomyRequestForm();
+		ShrubberyCreationForm();
 
 		std::string _target;
 };

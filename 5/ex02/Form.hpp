@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nigoncal <nigoncal@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/11 16:10:40 by nigoncal          #+#    #+#             */
-/*   Updated: 2021/11/12 11:57:29 by nigoncal         ###   ########lyon.fr   */
+/*   Created: 2021/11/11 16:11:12 by nigoncal          #+#    #+#             */
+/*   Updated: 2021/11/11 16:11:13 by nigoncal         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 #include <iostream>
 #include "Bureaucrat.hpp"
-
 
 class Bureaucrat;
 
@@ -40,6 +39,8 @@ class Form
 
 		bool isSigned() const;
 		void setSigned(bool state);
+
+		virtual void execute(Bureaucrat const &executor) const = 0;
 	
 		class GradeTooHighException : public std::exception {
 			public:
@@ -56,11 +57,12 @@ class Form
 					return "Grade to low.";
 				}
 		};
-		class is_signned : public std::exception {
+
+		class FormNotSignedException : public std::exception {
 			public:
 				virtual const char* what() const throw ()
 				{
-					return "form is already signed";
+					return "Form must be signed.";
 				}
 		};
 

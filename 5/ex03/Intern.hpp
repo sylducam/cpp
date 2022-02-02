@@ -1,46 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
+/*   Intern.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nigoncal <nigoncal@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/11 16:11:36 by nigoncal          #+#    #+#             */
-/*   Updated: 2021/11/11 16:11:37 by nigoncal         ###   ########lyon.fr   */
+/*   Created: 2021/11/11 16:12:38 by nigoncal          #+#    #+#             */
+/*   Updated: 2021/11/11 16:12:39 by nigoncal         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ROBOTOMYREQUESTFORM_H
-# define ROBOTOMYREQUESTFORM_H
+#ifndef INTERN_H
+# define INTERN_H
 
 #include <iostream>
 #include "Form.hpp"
 
-class RobotomyRequestForm : public Form
+class Intern
 {
 	public:
-		RobotomyRequestForm(std::string target);
-		RobotomyRequestForm(RobotomyRequestForm const &cpy);
-		~RobotomyRequestForm();
-		RobotomyRequestForm &operator=(RobotomyRequestForm const &cpy);
+		Intern();
+		Intern(Intern const &cpy);
+		~Intern();
 
-		std::string getTarget() const;
-		void setTarget(std::string target);
+		Intern &operator=(const Intern &cpy);
+		Form *makeForm(std::string form, std::string target);
 
-		void execute(Bureaucrat const &executor) const;
-
-		class FileErrorException : public std::exception {
+		class FormNotFoundException : public std::exception {
 			public:
 				virtual const char* what() const throw ()
 				{
-					return "Error with file.";
+					return "Form not found !";
 				}
 		};
 
 	private:
-		RobotomyRequestForm();
-
-		std::string _target;
+		std::string _forms[3];
+		Form *(*_formsConstructor[3])(std::string target);
 };
 
 #endif

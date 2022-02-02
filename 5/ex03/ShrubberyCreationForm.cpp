@@ -5,13 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nigoncal <nigoncal@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/11 16:11:52 by nigoncal          #+#    #+#             */
-/*   Updated: 2021/11/11 16:11:53 by nigoncal         ###   ########lyon.fr   */
+/*   Created: 2021/11/11 16:13:30 by nigoncal          #+#    #+#             */
+/*   Updated: 2021/11/11 16:13:31 by nigoncal         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 #include <fstream>
+#include "Bureaucrat.hpp"
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : Form("ShrubberyCreationForm", 145, 137), _target(target) 
 {
@@ -79,4 +80,9 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 	file << tree;
 
 	file.close();
+}
+
+Form *ShrubberyCreationForm::newForm(std::string target)
+{
+	return new ShrubberyCreationForm(target);
 }

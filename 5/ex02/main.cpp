@@ -3,52 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tglory <tglory@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: nigoncal <nigoncal@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/31 15:51:10 by tglory            #+#    #+#             */
-/*   Updated: 2022/02/02 03:44:41 by tglory           ###   ########lyon.fr   */
+/*   Created: 2021/11/11 16:11:17 by nigoncal          #+#    #+#             */
+/*   Updated: 2021/11/12 13:11:16 by nigoncal         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PresidentialPardonForm.hpp"
+#include "Bureaucrat.hpp"
+#include "Form.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
-void defaultTest(Bureaucrat *bureaucrat, AForm *form)
+int	main()
 {
-	std::cout << *form << std::endl;
-	try
-	{
-		while (bureaucrat->getGrade() > form->getRequireLvlToSigned())
-		{
-			bureaucrat->upGrade();
-		}
-		while (bureaucrat->getGrade() > form->getRequireLvlToExecute())
-		{
-			bureaucrat->upGrade();
-		}
-		bureaucrat->signForm(*form);
-		bureaucrat->execute(*form);
+	Bureaucrat bob("Bob", 20);
+	ShrubberyCreationForm shrub("Shrub");
+	PresidentialPardonForm obama("Obama");
+	RobotomyRequestForm bender("Bender");
+
+	bob.signForm(shrub);
+	bob.signForm(obama);
+	bob.signForm(bender);
+
+	bob.executeForm(shrub);
+
+	try {
+		shrub.execute(bob);
+		obama.execute(bob);
+		bender.execute(bob);
+
 	} catch (std::exception &e) {
-		std::cout << "Unable to execute form : " << e.what() << std::endl;
+		std::cout << "You can't execute this form because : " << e.what() << std::endl;
 	}
-	delete form;
-}
-
-int main()
-{
-	Bureaucrat *bureaucrat = new Bureaucrat("Jacky");
-	AForm *form;
-
-	form = new RobotomyRequestForm("Elon");
-	defaultTest(bureaucrat, form);
-
-	form = new ShrubberyCreationForm("Foo");
-	defaultTest(bureaucrat, form);
-
-	form = new PresidentialPardonForm("Bar");
-	defaultTest(bureaucrat, form);
-
-	delete bureaucrat;
-	return 0;
 }

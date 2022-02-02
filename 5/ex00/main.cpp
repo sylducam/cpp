@@ -1,39 +1,59 @@
 #include "Bureaucrat.hpp"
 
-int main()
+int	main()
 {
-	Bureaucrat *bureaucrat = new Bureaucrat;
+	Bureaucrat bob = Bureaucrat();
 
-	std::cout << *bureaucrat << std::endl;
-	try
-	{
-		bureaucrat->downGrade();
-	} catch (Bureaucrat::GradeTooLowException &e) {
-		std::cout << e.what() << std::endl;
+	std::cout << bob << std::endl << std::endl;
+
+	std::cout << "- Set grade to 809 - " << std::endl;
+	try {
+		bob.setGrade(809);
+
+	} catch (std::exception &e) {
+		std::cout << "ERROR: " << e.what() << std::endl;
 	}
 
-	std::cout << *bureaucrat << std::endl;
-	try
-	{
-		while (true)
-		{
-			bureaucrat->upGrade();
+	std::cout << std::endl;
+
+	std::cout << "- Set grade to 0 - " << std::endl;
+	try {
+		bob.setGrade(0);
+
+	} catch (std::exception &e) {
+		std::cout << "ERROR: " << e.what() << std::endl;
+	}
+
+	std::cout << std::endl;
+
+	std::cout << "- Set grade to 5 - " << std::endl;
+	try {
+		bob.setGrade(5);
+	} catch (std::exception &e) {
+		std::cout << "ERROR: " << e.what() << std::endl;
+	}
+
+	std::cout << bob << std::endl << std::endl;
+
+	std::cout << "- decrement 150x -" << std::endl;
+	try {
+		for (int i = 0; i < 150; i++) {
+			bob.decrement();
 		}
-	} catch (Bureaucrat::GradeTooHighException &e) {
-		std::cout << e.what() << std::endl;
+	} catch (std::exception &e) {
+		std::cout << bob << std::endl;
+		std::cout << "ERROR: " << e.what() << std::endl << std::endl;
 	}
 
-	std::cout << *bureaucrat << std::endl;
-	try
-	{
-		while (true)
-		{
-			bureaucrat->downGrade();
+
+	std::cout << "- increment 150x -" << std::endl;
+	try {
+		for (int i = 0; i < 150; i++) {
+			bob.increment();
 		}
-	} catch (Bureaucrat::GradeTooLowException &e) {
-		std::cout << e.what() << std::endl;
+	} catch (std::exception &e) {
+		std::cout << bob << std::endl;
+		std::cout << "ERROR: " << e.what() << std::endl;
 	}
-	std::cout << *bureaucrat << std::endl;
-	delete bureaucrat;
-	return 0;
+
 }

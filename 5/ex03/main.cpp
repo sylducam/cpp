@@ -5,38 +5,46 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nigoncal <nigoncal@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/11 16:10:47 by nigoncal          #+#    #+#             */
-/*   Updated: 2021/11/12 12:11:18 by nigoncal         ###   ########lyon.fr   */
+/*   Created: 2021/11/11 16:12:46 by nigoncal          #+#    #+#             */
+/*   Updated: 2021/11/12 13:25:14 by nigoncal         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 
 int	main()
 {
-	Bureaucrat bob = Bureaucrat("Bob", 21);
-
-	Form carForm = Form("CarForm", 20, 50);
-
-	std::cout << bob << std::endl << std::endl;
-
-	bob.signForm(carForm);
+	Intern someRandomIntern;
+	Form* rrf = nullptr;
+	Form* ppf = nullptr;
 
 	try {
-		carForm.beSigned(bob);
+		Bureaucrat bob = Bureaucrat("Bobby", 2);
+
+		rrf = someRandomIntern.makeForm("robotomy", "Bender");
+		ppf = someRandomIntern.makeForm("presidential", "Obama");
+
+		std::cout << " -- --- -- " << std::endl;
+
+		bob.signForm(*rrf);
+		bob.executeForm(*rrf);
+
+		std::cout << " -- --- -- " << std::endl;
+
+		bob.signForm(*ppf);
+		bob.executeForm(*ppf);
+
 	} catch (std::exception &e) {
-		std::cout << "ERROR: " << e.what() << std::endl;
+		std::cout << e.what() << std::endl;
 	}
-
-	bob.setGrade(1);
-
-	std::cout << std::endl << bob << std::endl << std::endl;
-	bob.signForm(carForm);
-
-	try {
-		carForm.beSigned(bob);
-	} catch (std::exception &e) {
-		std::cout << "ERROR: " << e.what() << std::endl;
-	}
+	
+	if (nullptr != rrf)
+		delete rrf;
+	if (nullptr != ppf)
+		delete ppf;
 }

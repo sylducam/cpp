@@ -1,19 +1,24 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat(void) : _name("Boris"), _grade(150) {}
-
-Bureaucrat::Bureaucrat(Bureaucrat const& instance) : _name(instance.getName()), _grade(instance.getGrade())
+Bureaucrat::Bureaucrat() : _name("Boris"), _grade(150)
 {
-	*this = instance;
 }
 
-Bureaucrat& Bureaucrat::operator=(Bureaucrat const& instance)
+Bureaucrat::Bureaucrat(Bureaucrat const &cpy) : _name(cpy.getName()), _grade(cpy.getGrade()) 
 {
-	(void)instance;
+	*this = cpy;
+}
+
+Bureaucrat::~Bureaucrat()
+{
+}
+
+Bureaucrat &Bureaucrat::operator=(Bureaucrat const &cpy)
+{
+	this->_grade = cpy.getGrade();
+
 	return *this;
 }
-
-Bureaucrat::~Bureaucrat(void) {}
 
 std::string Bureaucrat::getName() const
 {
@@ -22,27 +27,30 @@ std::string Bureaucrat::getName() const
 
 int Bureaucrat::getGrade() const
 {
-	return this->_grade; 
+	return this->_grade;
 }
 
-void Bureaucrat::upGrade()
+void Bureaucrat::setGrade(int value)
 {
-	if (this->_grade == HIGHEST_RANK)
-		throw Bureaucrat::GradeTooHighException();
-	--this->_grade;
-	std::cout << this->_name << " was promoted to grade " << this->getGrade() << std::endl;
+	if (value < 1)
+		throw GradeTooHighException();
+	if (value > 150)
+		throw GradeTooLowException();
+	this->_grade = value;
 }
 
-void Bureaucrat::downGrade()
+void Bureaucrat::increment()
 {
-	if (this->_grade == LOWEST_RANK)
-		throw Bureaucrat::GradeTooLowException();
-	++this->_grade;
-	std::cout << this->_name << " was demoted to grade " << this->getGrade() << std::endl;
+	this->setGrade(this->getGrade() - 1 );
 }
 
-std::ostream& operator<<(std::ostream& outputFile, Bureaucrat const& instance)
+void Bureaucrat::decrement()
 {
-	outputFile << instance.getName() << " is grade " << instance.getGrade();
-	return outputFile;
+	this->setGrade(this->getGrade() + 1 );
+}
+
+std::ostream &operator<<(std::ostream &out, const Bureaucrat &Bureaucrat)
+{
+	out << "<" + Bureaucrat.getName() + ">" << " bureaucrat grade <" << Bureaucrat.getGrade() << ">";
+	return out;
 }

@@ -1,4 +1,4 @@
-NAME = Form
+NAME = Intern
 PATH_SRC = ./
 PATH_OBJ = ./
 PATH_INC = ./
@@ -8,6 +8,10 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRC =		Bureaucrat.cpp \
 			Form.cpp \
+			ShrubberyCreationForm.cpp \
+			RobotomyRequestForm.cpp \
+			PresidentialPardonForm.cpp \
+			Intern.cpp \
 			main.cpp
 
 OBJ = $(addprefix $(PATH_SRC), $(SRC:.cpp=.o))

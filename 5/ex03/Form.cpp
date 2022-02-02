@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nigoncal <nigoncal@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/11 16:10:36 by nigoncal          #+#    #+#             */
-/*   Updated: 2021/11/12 12:58:31 by nigoncal         ###   ########lyon.fr   */
+/*   Created: 2021/11/11 16:12:21 by nigoncal          #+#    #+#             */
+/*   Updated: 2021/11/11 16:12:22 by nigoncal         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ Form::Form(Form const &cpy)
 {
 	this->_name = cpy.getName();
 	this->_gradeToExec = cpy.getGradeToExec();
-	this->_gradeToSign = cpy.getGradeToSign(); 
+	this->_gradeToSign = cpy.getGradeToSign();
 	this->_isSigned = false;
 }
 
@@ -42,15 +42,21 @@ Form &Form::operator=(Form const &cpy)
 	return *this;
 }
 
-void Form::beSigned(Bureaucrat const &Bureaucrat)
+void Form::beSigned(Bureaucrat const &brt)
 {
-	if(this->_isSigned == true)
-		throw is_signned();
-	if (Bureaucrat.getGrade() > this->getGradeToSign())
+	if (brt.getGrade() > this->getGradeToSign())
 		throw GradeTooLowException();
 
 	this->setSigned(true);
-	std::cout << Bureaucrat.getName() << " signs " << this->getName() << std::endl;
+	std::cout << brt.getName() << " signs " << this->getName() << std::endl;
+}
+
+void Form::execute(Bureaucrat const &executor) const
+{
+	if (!this->isSigned())
+		throw FormNotSignedException();
+	if (executor.getGrade() > this->getGradeToExec())
+		throw GradeTooLowException();
 }
 
 std::string Form::getName() const
