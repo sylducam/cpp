@@ -7,17 +7,21 @@
 
 class MateriaSource : public IMateriaSource
 {
-	public:
-		MateriaSource();
-		MateriaSource(MateriaSource const &instance);
-		MateriaSource &operator=(MateriaSource const &instance);
-		~MateriaSource();
-		void learnMateria(AMateria*);
-		AMateria* createMateria(std::string const & type);
 	private:
-		AMateria *materias[MAX_MATERIA];
 
+		AMateria* _materias[MAX_MATERIA];
+	
 		void initMateriaStorage();
+
+	public:
+		
+		MateriaSource(void);
+		MateriaSource(MateriaSource const& instance);
+		MateriaSource& operator=(MateriaSource const& instance);
+		~MateriaSource(void);
+
+		void		learnMateria(AMateria*);
+		AMateria*	createMateria(std::string const& type);
 };
 
 #endif

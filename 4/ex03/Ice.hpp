@@ -9,12 +9,13 @@ class ICharacter;
 class Ice : public AMateria
 {
 	public:
-		Ice();
-		Ice(Ice const &instance);
-		Ice &operator=(Ice const &instance);
-		~Ice();
 
-		Ice* clone() const;
+		Ice(void);
+		Ice(Ice const& instance);
+		Ice& operator=(Ice const& instance);
+		~Ice(void);
+
+		Ice* clone(void) const;
 		void use(ICharacter& target);
 };
 

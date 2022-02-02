@@ -9,12 +9,13 @@ class ICharacter;
 class Cure : public AMateria
 {
 	public:
-		Cure();
-		Cure(Cure const &instance);
-		Cure &operator=(Cure const &instance);
-		~Cure();
 
-		Cure* clone() const;
+		Cure(void);
+		Cure(Cure const& instance);
+		Cure& operator=(Cure const& instance);
+		~Cure(void);
+
+		Cure* clone(void) const;
 		void use(ICharacter& target);
 };
 

@@ -1,17 +1,23 @@
 #include "AMateria.hpp"
 
-AMateria::AMateria() : name("empty") {}
+AMateria::AMateria(void) : name("empty")
+{
+}
 
-AMateria::AMateria(AMateria const &instance)
+AMateria::AMateria(AMateria const& instance)
 {
 	*this = instance;
 }
 
-AMateria::AMateria(std::string name) : name(name) {}
+AMateria::AMateria(std::string name) : name(name)
+{
+}
 
-AMateria::~AMateria() {}
+AMateria::~AMateria(void)
+{
+}
 
-std::string const & AMateria::getType() const
+std::string const& AMateria::getType() const
 {
 	return (this->name);
 }

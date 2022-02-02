@@ -1,6 +1,6 @@
 # include "Character.hpp"
 
-Character::Character() : name("nameless")
+Character::Character(void) : name("nameless")
 {
 	this->initInventory();
 }
@@ -10,13 +10,13 @@ Character::Character(std::string name) : name(name)
 	this->initInventory();
 }
 
-Character::Character(Character const &instance)
+Character::Character(Character const& instance)
 {
 	this->initInventory();
 	*this = instance;
 }
 
-Character &Character::operator=(Character const & instance)
+Character& Character::operator=(Character const& instance)
 {
 	this->name = instance.getName();
 	for (int i = 0; i < MAX_INV; ++i)
@@ -29,7 +29,7 @@ Character &Character::operator=(Character const & instance)
 	return *this;
 }
 
-Character::~Character()
+Character::~Character(void)
 {
 	for (int idx = 0; idx < MAX_INV; ++idx)
 	{
@@ -53,7 +53,7 @@ Character::~Character()
 		std::cout << "[DEBUG] Character " << this->getName() << " destroyed." << std::endl;
 }
 
-void Character::initInventory()
+void Character::initInventory(void)
 {
 	for (int idx = 0; idx < MAX_INV; ++idx)
 		this->inventory[idx] = NULL;
@@ -61,7 +61,7 @@ void Character::initInventory()
 		this->toDelete[idx] = NULL;
 }
 
-std::string const & Character::getName() const
+std::string const& Character::getName(void) const
 {
 	return (this->name);
 }
@@ -84,7 +84,7 @@ void Character::equip(AMateria* m)
 		}
 		else if (this->inventory[idx] == m)
 		{
-			std::cout << "Materia " << this->inventory[idx]->getType() << " is already equip. You need to create an other instance." << std::endl;
+			std::cout << "Materia " << this->inventory[idx]->getType() << " is already equip. You need to create another instance." << std::endl;
 			return;
 		}
 	}
@@ -124,7 +124,7 @@ void Character::unEquipSafe(int idx)
 		}
 	}
 	if (DEBUG)
-		std::cout << "[DEBUG] The buffer of unEquipSafe is full. The instance of " << materia->getType() << " is delete right now." << std::endl;
+		std::cout << "[DEBUG] The buffer of unEquipSafe is full. The instance of " << materia->getType() << " is deleted right now." << std::endl;
 	delete materia;
 }
 
@@ -132,7 +132,7 @@ void Character::use(int idx, ICharacter& target)
 {
 	if (idx < 0 || idx >= MAX_INV)
 	{
-		std::cout << "Id " << idx << " of inventory of " << this->getName() << " is not in range of 0 to " << (MAX_INV - 1) << "." << std::endl;
+		std::cout << "Id " << idx << " of " << this->getName() << "'s inventory is not in range of 0 to " << (MAX_INV - 1) << "." << std::endl;
 		return;
 	}
 	if (!this->inventory[idx])

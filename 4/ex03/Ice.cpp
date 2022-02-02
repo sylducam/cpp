@@ -1,21 +1,25 @@
 #include "Ice.hpp"
 
-Ice::Ice() : AMateria("ice") {}
+Ice::Ice(void) : AMateria("ice")
+{
+}
 
-Ice::Ice(Ice const &instance) : AMateria("ice")
+Ice::Ice(Ice const& instance) : AMateria("ice")
 {
 	*this = instance;
 }
 
-Ice &Ice::operator=(Ice const &instance)
+Ice& Ice::operator=(Ice const& instance)
 {
 	(void)instance;
 	return (*this);
 }
 
-Ice::~Ice() {}
+Ice::~Ice(void)
+{
+}
 
-Ice* Ice::clone() const
+Ice* Ice::clone(void) const
 {
 	return new Ice(*this);
 }

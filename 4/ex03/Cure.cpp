@@ -1,23 +1,25 @@
 #include "Cure.hpp"
 
-Cure::Cure() : AMateria("cure")
+Cure::Cure(void) : AMateria("cure")
 {
 }
 
-Cure::Cure(Cure const &instance) : AMateria("cure")
+Cure::Cure(Cure const& instance) : AMateria("cure")
 {
 	*this = instance;
 }
 
-Cure &Cure::operator=(Cure const &instance)
+Cure& Cure::operator=(Cure const& instance)
 {
 	(void)instance;
 	return (*this);
 }
 
-Cure::~Cure() {}
+Cure::~Cure(void)
+{
+}
 
-Cure* Cure::clone() const
+Cure* Cure::clone(void) const
 {
 	return new Cure(*this);
 }
