@@ -5,7 +5,7 @@
 # include <iostream>
 
 # define MAX_INV 4
-# define DEBUG 1
+# define DEBUG 0
 
 class AMateria;
 
