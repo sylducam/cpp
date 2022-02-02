@@ -24,17 +24,19 @@ Brain::Brain(void)
 		this->_ideas[i] = getRandomChars(20);
 		std::cout << this->_ideas[i] << std::endl;
 	}
-	std::cout << "Bain created." << std::endl;
+	std::cout << "It thinks !" << std::endl;
 }
 
 Brain::Brain(Brain const& instance)
 {
 	*this = instance;
+	std::cout << "It thinks !" << std::endl;
+
 }
 
 Brain::~Brain(void)
 {
-	std::cout << "Bain destroyed." << std::endl;
+	std::cout << "Lobotomised" << std::endl;
 }
 
 void Brain::operator=(Brain const& instance)

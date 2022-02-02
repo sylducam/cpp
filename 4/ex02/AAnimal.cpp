@@ -2,17 +2,18 @@
 
 AAnimal::AAnimal(void)
 {
-	std::cout << "Animal default created." << std::endl;
+	std::cout << "An animal is born" << std::endl;
 }
 
 AAnimal::AAnimal(std::string name): name(name)
 {
-	std::cout << "Animal " << name << " created." << std::endl;
+	std::cout << "Hello " << name << std::endl;
 }
 
 AAnimal::AAnimal(AAnimal const& instance)
 {
 	*this = instance;
+	std::cout << "An animal is born" << std::endl;
 }
 
 AAnimal& AAnimal::operator=(AAnimal const& instance) 
@@ -23,12 +24,13 @@ AAnimal& AAnimal::operator=(AAnimal const& instance)
 
 AAnimal::~AAnimal(void) 
 {
-	std::cout << "Animal " << name <<  " destroyed." << std::endl;
+	std::cout << "Goodbye specimen " << name << std::endl;
+
 }
 
 void AAnimal::makeSound(void) const
 {
-	std::cout << "Default Animal Sound" << std::endl;
+	std::cout << "Animal Sound" << std::endl;
 }
 
 std::string AAnimal::getType(void) const
