@@ -1,55 +1,52 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Intern.cpp                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: nigoncal <nigoncal@student.42lyon.fr>      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/11 16:12:32 by nigoncal          #+#    #+#             */
-/*   Updated: 2021/11/11 16:12:33 by nigoncal         ###   ########lyon.fr   */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "Intern.hpp"
-#include "RobotomyRequestForm.hpp"
-#include "ShrubberyCreationForm.hpp"
-#include "PresidentialPardonForm.hpp"
 
-Intern::Intern()
+Intern::Intern() {}
+
+Intern::Intern(Intern const &instance)
 {
-	this->_forms[0] = "robotomy";
-	this->_forms[1] = "shrubbery";
-	this->_forms[2] = "presidential";
-
-	this->_formsConstructor[0] = RobotomyRequestForm::newForm;
-	this->_formsConstructor[1] = ShrubberyCreationForm::newForm;
-	this->_formsConstructor[2] = PresidentialPardonForm::newForm;
+	*this = instance;
 }
 
-Intern::Intern(Intern const &cpy)
+Intern &Intern::operator=(Intern const &instance)
 {
-	(void)cpy;
-}
-
-Intern::~Intern()
-{}
-
-Intern &Intern::operator=(const Intern &cpy)
-{
-	(void)cpy;
+	(void)instance;
 	return *this;
 }
 
-Form *Intern::makeForm(std::string form, std::string target)
+Intern::~Intern() {}
+
+AForm* Intern::makeForm(std::string formName, std::string target) const
 {
-	for (int i = 0; i < 3; i++)
+	int index = -1;
+	std::string formNames[] = {"presidential pardon", "robotomy request", "shruberry creation"};
+	int formSize = sizeof(formNames) / sizeof(formNames[0]);
+
+	for (int i = 0; i < formSize; ++i)
 	{
-		if (this->_forms[i] == form)
+		if (formNames[i] == formName)
 		{
-			std::cout << "Intern creates " + form << std::endl;
-			return ((this->_formsConstructor[i])(target));
+			index = i;
+			break ;
 		}
 	}
-	throw FormNotFoundException();
-	return NULL;
+	switch (index)
+	{
+		case 0:
+		{
+			std::cout << "Intern creates PresidentialPardonForm" << std::endl;
+			return new PresidentialPardonForm(target);
+		}
+		case 1:
+		{
+			std::cout << "Intern creates RobotomyRequestForm" << std::endl;
+			return new RobotomyRequestForm(target);
+		}
+		case 2:
+		{
+			std::cout << "Intern creates ShrubberyCreationForm" << std::endl;
+			return new ShrubberyCreationForm(target);
+		}
+		default:
+			throw Intern::UnknownForm();
+	}
 }

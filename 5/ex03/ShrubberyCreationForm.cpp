@@ -1,88 +1,29 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: nigoncal <nigoncal@student.42lyon.fr>      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/11 16:13:30 by nigoncal          #+#    #+#             */
-/*   Updated: 2021/11/11 16:13:31 by nigoncal         ###   ########lyon.fr   */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "ShrubberyCreationForm.hpp"
-#include <fstream>
-#include "Bureaucrat.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : Form("ShrubberyCreationForm", 145, 137), _target(target) 
-{
-}
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreationForm", target, 145, 137)  {}
 
-ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &cpy) : Form(cpy.getName(), cpy.getGradeToSign(), cpy.getGradeToExec())
-{
-	this->_target = cpy.getTarget();
-}
-
-ShrubberyCreationForm::~ShrubberyCreationForm()
-{}
-
-ShrubberyCreationForm &ShrubberyCreationForm::operator=(ShrubberyCreationForm const &cpy)
-{
-	this->_target = cpy.getTarget();
-	return *this;
-}
-
-std::string ShrubberyCreationForm::getTarget() const
-{
-	return this->_target;
-}
-
-void ShrubberyCreationForm::setTarget(std::string target)
-{
-	this->_target = target;
-}
+ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
 void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
-	std::ofstream file(this->getTarget() + "_shrubbery");
+	this->canExecute(executor);
 
-	Form::execute(executor);
+	std::ofstream outfile;
+	std::string fileName(this->getTarget() + "_shrubbery");
+	std::string content;
 
-	if (file.fail())
-		throw FileErrorException();
-	
-	std::string tree = 
-			".{{}}}}}}.\n"
-			"{{{{{{(`)}}}.\n"
-		"{{{(`)}}}}}}}}}\n"
-		"}}}}}}}}}{{(`){{{\n"
-		"}}}}{{{{(`)}}{{{{\n"
-		"{{{(`)}}}}}}}{}}}}}\n"
-		"{{{{{{{{(`)}}}}}}}}}}\n"
-		"{{{{{{{}{{{{(`)}}}}}}\n"
-		" {{{{{(`)   {{{{(`)}'\n"
-		"  (`)  /     \\ \n"
-		" ~~~~~~~~~~~~~~~~~~~\n"
-		" "
-			".{{}}}}}}.\n"
-			"{{{{{{(`)}}}.\n"
-		"{{{(`)}}}}}}}}}\n"
-		"}}}}}}}}}{{(`){{{\n"
-		"}}}}{{{{(`)}}{{{{\n"
-		"{{{(`)}}}}}}}{}}}}}\n"
-		"{{{{{{{{(`)}}}}}}}}}}\n"
-		"{{{{{{{}{{{{(`)}}}}}}\n"
-		" {{{{{(`)   {{{{(`)}'\n"
-		"  (`)  /     \\ \n"
-		" ~~~~~~~~~~~~~~~~~~~\n"
-		" " ;
-
-	file << tree;
-
-	file.close();
-}
-
-Form *ShrubberyCreationForm::newForm(std::string target)
-{
-	return new ShrubberyCreationForm(target);
+	outfile.open(fileName.c_str());
+	if (outfile.fail())
+		throw ShrubberyCreationForm::CantWriteFile();
+	outfile << "        _-_" << std::endl;
+	outfile << "     /~~   ~~\\" << std::endl;
+	outfile << "  /~~         ~~\\" << std::endl;
+	outfile << " {               }" << std::endl;
+	outfile << "  \\  _-     -_  /" << std::endl;
+	outfile << "       \\\\ //   " << std::endl;
+	outfile << "        | |     " << std::endl;
+	outfile << "        | |     " << std::endl;
+	outfile << "       // \\\\" << std::endl;
+	outfile.close();
+	std::cout << fileName << " file created." << std::endl;
 }

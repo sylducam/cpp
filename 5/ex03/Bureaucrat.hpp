@@ -1,64 +1,53 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: nigoncal <nigoncal@student.42lyon.fr>      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/11 16:12:16 by nigoncal          #+#    #+#             */
-/*   Updated: 2021/11/11 16:12:17 by nigoncal         ###   ########lyon.fr   */
-/*                                                                            */
-/* ************************************************************************** */
+#ifndef BUREAUCRAT_HPP
+# define BUREAUCRAT_HPP
 
-#ifndef BUREAUCRAT_H
-# define BUREAUCRAT_H
+# include <iostream>
+# include <exception>
+# include "AForm.hpp"
 
-#include"Form.hpp"
-#include <iostream>
+# define HIGHEST_RANK 1
+# define LOWEST_RANK 150
 
-class Form;
+class AForm;
 
 class Bureaucrat
 {
 	public:
-		Bureaucrat(std::string name, int grade);
-		Bureaucrat(Bureaucrat const &cpy);
-		~Bureaucrat();
-		Bureaucrat &operator=(Bureaucrat const &cpy);
-
-		std::string getName() const;
-		void setName(std::string name);
-		int	getGrade() const;
-		void setGrade(int value);
-		void increment();
-		void decrement();
-		void signForm(Form &form);
-		void executeForm(Form const &form);
-
-		class GradeTooHighException : public std::exception {
-			public:
-				virtual const char* what() const throw ()
-				{
-					return ("Note to high.");
-				}
-		};
-
-		class GradeTooLowException : public std::exception {
-			public:
-				virtual const char* what() const throw ()
-				{
-					return ("Note to low.");
-				}
-		};
-
-	private:
 		Bureaucrat();
+		Bureaucrat(std::string name);
+		Bureaucrat(std::string name, int grade);
+		Bureaucrat(Bureaucrat const &instance);
+		Bureaucrat &operator=(Bureaucrat const &instance);
+		~Bureaucrat();
+		std::string getName() const;
+		int getGrade() const;
+		void signForm(AForm &form);
+		void execute(AForm const &form);
+		void upGrade();
+		void downGrade();
 
-		std::string _name;
-		int	_grade;
+		class GradeTooHighException : public std::exception
+		{
+			public:
+				virtual const char* what() const throw()
+				{
+					return ("\e[0;31mBureaucrat::GradeTooHighException > Grade too high\e[0m");
+				}
+		};
 
+		class GradeTooLowException : public std::exception
+		{
+			public:
+				virtual const char* what() const throw()
+				{
+					return ("\e[0;31mBureaucrat::GradeTooLowException > Grade too low\e[0m");
+				}
+		};
+	private:
+		const std::string name;
+		int grade;
 };
 
-std::ostream	&operator<<(std::ostream &out, const Bureaucrat &yo);
+std::ostream &operator<<(std::ostream &outputFile, Bureaucrat const &instance);
 
 #endif

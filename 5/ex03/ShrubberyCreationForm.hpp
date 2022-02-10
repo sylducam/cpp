@@ -1,47 +1,28 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: nigoncal <nigoncal@student.42lyon.fr>      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/11 16:13:38 by nigoncal          #+#    #+#             */
-/*   Updated: 2021/11/11 16:13:39 by nigoncal         ###   ########lyon.fr   */
-/*                                                                            */
-/* ************************************************************************** */
+#ifndef SHRUBBERRYCREATIONFORM_HPP
+# define SHRUBBERRYCREATIONFORM_HPP
 
-#ifndef SHRUBBERYCREATIONFORM_H
-# define SHRUBBERYCREATIONFORM_H
+# include "AForm.hpp"
+# include <fstream>
 
-#include <iostream>
-#include "Form.hpp"
-
-class ShrubberyCreationForm : public Form
+class ShrubberyCreationForm : public AForm
 {
 	public:
+		ShrubberyCreationForm();
 		ShrubberyCreationForm(std::string target);
-		ShrubberyCreationForm(ShrubberyCreationForm const &cpy);
+		ShrubberyCreationForm(ShrubberyCreationForm const &instance);
+		ShrubberyCreationForm &operator=(ShrubberyCreationForm const &instance);
 		~ShrubberyCreationForm();
-		ShrubberyCreationForm &operator=(ShrubberyCreationForm const &cpy);
 
-		std::string getTarget() const;
-		void setTarget(std::string target);
-
-		void execute(Bureaucrat const &executor) const;
-		static Form *newForm(std::string target);
-
-		class FileErrorException : public std::exception {
+		virtual void execute(Bureaucrat const &executor) const;
+	
+		class CantWriteFile : public std::exception
+		{
 			public:
-				virtual const char* what() const throw ()
+				virtual const char* what() const throw()
 				{
-					return "Error with file.";
+					return ("\e[0;31mForm::ShrubberyCreationForm > Unable to write to file\e[0m");
 				}
 		};
-
-	private:
-		ShrubberyCreationForm();
-
-		std::string _target;
 };
 
 #endif

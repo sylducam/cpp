@@ -1,46 +1,18 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: nigoncal <nigoncal@student.42lyon.fr>      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/11 16:11:25 by nigoncal          #+#    #+#             */
-/*   Updated: 2021/11/11 16:11:26 by nigoncal         ###   ########lyon.fr   */
-/*                                                                            */
-/* ************************************************************************** */
+#ifndef PRESIDENTIALPARDONFORM_HPP
+# define PRESIDENTIALPARDONFORM_HPP
 
-#ifndef PRESIDENTIALPARDONFORM_H
-# define PRESIDENTIALPARDONFORM_H
+# include "AForm.hpp"
 
-#include <iostream>
-#include "Form.hpp"
-
-class PresidentialPardonForm : public Form
+class PresidentialPardonForm : public AForm
 {
 	public:
-		PresidentialPardonForm(std::string target);
-		PresidentialPardonForm(PresidentialPardonForm const &cpy);
-		~PresidentialPardonForm();
-		PresidentialPardonForm &operator=(PresidentialPardonForm const &cpy);
-
-		std::string getTarget() const;
-		void setTarget(std::string target);
-
-		void execute(Bureaucrat const &executor) const;
-
-		class FileErrorException : public std::exception {
-			public:
-				virtual const char* what() const throw ()
-				{
-					return "Error with file.";
-				}
-		};
-
-	private:
 		PresidentialPardonForm();
+		PresidentialPardonForm(std::string target);
+		PresidentialPardonForm(PresidentialPardonForm const &instance);
+		PresidentialPardonForm &operator=(PresidentialPardonForm const &instance);
+		~PresidentialPardonForm();
 
-		std::string _target;
+		virtual void execute(Bureaucrat const &executor) const;
 };
 
 #endif

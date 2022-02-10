@@ -1,56 +1,62 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat() : _name("Boris"), _grade(150)
+Bureaucrat::Bureaucrat() : name("nameless"), grade(150) {}
+
+Bureaucrat::Bureaucrat(std::string name) : name(name), grade(150) {}
+
+Bureaucrat::Bureaucrat(std::string name, int grade) : name(name), grade(grade)
 {
+	if (this->grade < HIGHEST_RANK)
+		throw Bureaucrat::GradeTooHighException();
+	if (this->grade > LOWEST_RANK)
+		throw Bureaucrat::GradeTooLowException();
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat const &cpy) : _name(cpy.getName()), _grade(cpy.getGrade()) 
+Bureaucrat::Bureaucrat(Bureaucrat const &instance) : name(instance.getName()), grade(instance.getGrade())
 {
-	*this = cpy;
+	if (this->grade <= HIGHEST_RANK)
+		throw Bureaucrat::GradeTooHighException();
+	if (this->grade > LOWEST_RANK)
+		throw Bureaucrat::GradeTooLowException();
+	*this = instance;
 }
 
-Bureaucrat::~Bureaucrat()
+Bureaucrat &Bureaucrat::operator=(Bureaucrat const &instance)
 {
-}
-
-Bureaucrat &Bureaucrat::operator=(Bureaucrat const &cpy)
-{
-	this->_grade = cpy.getGrade();
-
+	(void)instance;
 	return *this;
 }
 
+Bureaucrat::~Bureaucrat() {}
+
 std::string Bureaucrat::getName() const
 {
-	return this->_name;
+	return this->name;
 }
 
 int Bureaucrat::getGrade() const
 {
-	return this->_grade;
+	return this->grade; 
 }
 
-void Bureaucrat::setGrade(int value)
+void Bureaucrat::upGrade()
 {
-	if (value < 1)
-		throw GradeTooHighException();
-	if (value > 150)
-		throw GradeTooLowException();
-	this->_grade = value;
+	if (this->grade == HIGHEST_RANK)
+		throw Bureaucrat::GradeTooHighException();
+	--this->grade;
+	std::cout << this->name << " was promote lvl " << this->getGrade() << std::endl;
 }
 
-void Bureaucrat::increment()
+void Bureaucrat::downGrade()
 {
-	this->setGrade(this->getGrade() - 1 );
+	if (this->grade == LOWEST_RANK)
+		throw Bureaucrat::GradeTooLowException();
+	++this->grade;
+	std::cout << this->name << " was demote lvl " << this->getGrade() << std::endl;
 }
 
-void Bureaucrat::decrement()
+std::ostream &operator<<(std::ostream &outputFile, Bureaucrat const &instance)
 {
-	this->setGrade(this->getGrade() + 1 );
-}
-
-std::ostream &operator<<(std::ostream &out, const Bureaucrat &Bureaucrat)
-{
-	out << "<" + Bureaucrat.getName() + ">" << " bureaucrat grade <" << Bureaucrat.getGrade() << ">";
-	return out;
+	outputFile << instance.getName() << " is lvl " << instance.getGrade() << ".";
+	return outputFile;
 }
