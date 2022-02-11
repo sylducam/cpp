@@ -5,41 +5,51 @@ void test(std::string str)
 {
 	Converter *convert;
 
-	std::cout << "Test for '" << str << "' :" << std::endl;
 	convert = new Converter(str);
 	convert->print();
 	delete convert;
 }
 
-int main(void)
+int main(int argc, char **argv)
 {
-	test("A");
-	std::cout << std::endl;
-	test("*");
-	std::cout << std::endl;
-	test("0");
-	std::cout << std::endl;
-	test("42");
-	std::cout << std::endl;
-	test("-42");
-	std::cout << std::endl;
-	test("42.0f");
-	std::cout << std::endl;
-	test("42.0");
-	std::cout << std::endl;
-	test("42.5");
-	std::cout << std::endl;
-	test("nan");
-	std::cout << std::endl;
-	test("400 bad usage");
-	std::cout << std::endl;
-	test("bad");
-	std::cout << std::endl;
-	test("bad usage");
-	std::cout << std::endl;
-	test("42 ");
-	std::cout << std::endl;
-	test("FR");
+	if (argc == 2)
+		test(argv[1]);
+	else
+		std::cout << "Usage : ./exe_convert <argument>" << std::endl;
+	// test("A");
+	// std::cout << std::endl;
+	// test("*");
+	// std::cout << std::endl;
+	// test("0");
+	// std::cout << std::endl;
+	// test("42");
+	// std::cout << std::endl;
+	// test("-42");
+	// std::cout << std::endl;
+	// test("42.0f");
+	// std::cout << std::endl;
+	// test("42.0");
+	// std::cout << std::endl;
+	// test("42.5");
+	// std::cout << std::endl;
+	// test("nan");
+	// std::cout << std::endl;
+	// test("nanf");
+	// std::cout << std::endl;
+	// test("+inf");
+	// std::cout << std::endl;
+	// test("-inf");
+	// std::cout << std::endl;
+	// test("-inff");
+	// std::cout << std::endl;
+	// test("+inff");
+	// std::cout << std::endl;
+	// test("400 bad usage");
+	// std::cout << std::endl;
+	// test("bad");
+	// std::cout << std::endl;
+	// test("42 ");
+	// std::cout << std::endl;
 	return 0;
 }
 

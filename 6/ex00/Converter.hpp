@@ -11,7 +11,6 @@
 class Converter
 {
 	public:
-		Converter();
 		Converter(std::string raw);
 		Converter(Converter const &instance);
 		Converter &operator=(Converter const &instance);
@@ -32,10 +31,11 @@ class Converter
 			public:
 				virtual const char* what() const throw()
 				{
-					return ("Not displayable");
+					return ("Non displayable");
 				}
 		};
 	private:
+		Converter();
 		const std::string raw;
 		int toInt();
 		float toFloat();
