@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: tglory <tglory@student.42lyon.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/06 14:57:40 by tglory            #+#    #+#             */
-/*   Updated: 2022/02/06 20:52:32 by tglory           ###   ########lyon.fr   */
-/*                                                                            */
-/* ************************************************************************** */
-
 # include "Data.hpp"
 
 static uintptr_t serialize(Data* ptr)
@@ -34,7 +22,7 @@ int main(void)
 	std::cout << std::endl;
 
 	uintptr_t serialization = serialize(ptr);
-	std::cout << "Serialize() result:\t\t\t" << serialization << std::endl;
+	std::cout << "serialize() result:\t\t\t" << serialization << std::endl;
 	std::cout << std::endl;
 
 	Data *recovered = deserialize(serialization);
