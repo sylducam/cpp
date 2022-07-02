@@ -1,31 +1,25 @@
-NAME = Form
-PATH_SRC = ./
-PATH_OBJ = ./
-PATH_INC = ./
+NAME		= 	exe_different_forms
 
-CXX = clang++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+SRCS		=	$(wildcard *.cpp)
 
-SRC =		Bureaucrat.cpp \
-			Form.cpp \
-			ShrubberyCreationForm.cpp \
-			RobotomyRequestForm.cpp \
-			PresidentialPardonForm.cpp \
-			main.cpp
+HEADER		=	$(wildcard *.hpp)
 
-OBJ = $(addprefix $(PATH_SRC), $(SRC:.cpp=.o))
+COMP		= 	clang++
 
-.PHONY: clean fclean
+RM			= 	rm -rf
 
-all: $(NAME)
+CFLAGS		= 	-Wall -Wextra -Werror -std=c++98
 
-$(NAME): $(OBJ)
-	$(CXX) $(OBJ) -o $(NAME)
+all			:	$(NAME)
 
-clean:
-	rm -f $(OBJ)
+$(NAME)		:	$(SRCS) $(HEADER)
+				$(COMP) $(CFLAGS) $(SRCS) -o $(NAME) -Iinclude
 
-fclean: clean
-	rm -f $(NAME)
+clean		:
+				$(RM) $(NAME)
 
-re: fclean all
+fclean		:	clean
+
+re			:	fclean all
+
+.PHONY		:	all clean fclean re

@@ -1,97 +1,70 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: nigoncal <nigoncal@student.42lyon.fr>      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/11 16:10:54 by nigoncal          #+#    #+#             */
-/*   Updated: 2021/11/11 16:10:55 by nigoncal         ###   ########lyon.fr   */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat()
-{}
+Bureaucrat::Bureaucrat() : name("nameless"), grade(150) {}
 
-Bureaucrat::Bureaucrat(std::string name, int grade)
+Bureaucrat::Bureaucrat(std::string name) : name(name), grade(150) {}
+
+Bureaucrat::Bureaucrat(std::string name, int grade) : name(name), grade(grade)
 {
-	this->_name = name;
-	this->setGrade(grade);
+	if (this->grade < HIGHEST_RANK)
+		throw Bureaucrat::GradeTooHighException();
+	if (this->grade > LOWEST_RANK)
+		throw Bureaucrat::GradeTooLowException();
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat const &cpy)
+Bureaucrat::Bureaucrat(Bureaucrat const &instance) : name(instance.getName()), grade(instance.getGrade())
 {
-	this->_name = cpy._name;
-	this->_grade = cpy._grade;
+	*this = instance;
 }
 
-Bureaucrat::~Bureaucrat()
-{}
-
-Bureaucrat &Bureaucrat::operator=(Bureaucrat const &cpy)
+Bureaucrat &Bureaucrat::operator=(Bureaucrat const &instance)
 {
-	this->_grade = cpy.getGrade();
-
+	(void)instance;
 	return *this;
 }
 
+Bureaucrat::~Bureaucrat() {}
+
 std::string Bureaucrat::getName() const
 {
-	return this->_name;
-}
-
-void Bureaucrat::setName(std::string name)
-{
-	this->_name = name;
+	return this->name;
 }
 
 int Bureaucrat::getGrade() const
 {
-	return this->_grade;
+	return this->grade; 
 }
 
-void Bureaucrat::setGrade(int value)
+void Bureaucrat::upGrade()
 {
-	if (value < 1)
-		throw GradeTooHighException();
-	if (value > 150)
-		throw GradeTooLowException();
-	this->_grade = value;
+	if (this->grade == HIGHEST_RANK)
+		throw Bureaucrat::GradeTooHighException();
+	--this->grade;
+	std::cout << this->name << " was promote lvl " << this->getGrade() << std::endl;
 }
 
-void Bureaucrat::increment()
+void Bureaucrat::downGrade()
 {
-	this->setGrade(this->getGrade() - 1 );
+	if (this->grade == LOWEST_RANK)
+		throw Bureaucrat::GradeTooLowException();
+	++this->grade;
+	std::cout << this->name << " was demote lvl " << this->getGrade() << std::endl;
 }
 
-void Bureaucrat::decrement()
+void Bureaucrat::signForm(AForm &form)
 {
-	this->setGrade(this->getGrade() + 1 );
+	form.beSigned(*this);
+	std::cout << this->name << " signs form " << form.getName() << "." << std::endl;
 }
 
-void Bureaucrat::signForm(Form &form)
+void Bureaucrat::execute(AForm const &form)
 {
-	try {
-		form.beSigned(*this);
-	} catch (std::exception &e) {
-		std::cout << this->getName() << " cannot sign " << form.getName() << " because this grade is too low." << std::endl;
-	}
+	form.execute(*this);
+	std::cout << this->getName() << " executed " << form.getName() << "." << std::endl;
 }
 
-void Bureaucrat::executeForm(Form const &form)
+std::ostream &operator<<(std::ostream &outputFile, Bureaucrat const &instance)
 {
-	try {
-		form.execute(*this);
-		std::cout << this->getName() + " executs " + form.getName() << std::endl;
-	} catch (std::exception &e) {
-		std::cout << this->getName() + " cannot execute the form." << std::endl;
-	}
-}
-
-std::ostream &operator<<(std::ostream &out, const Bureaucrat &yo)
-{
-	out << "<" + yo.getName() + ">" << " bureaucrat grade <" << yo.getGrade() << ">";
-	return out;
+	outputFile << instance.getName() << " is lvl " << instance.getGrade() << ".";
+	return outputFile;
 }

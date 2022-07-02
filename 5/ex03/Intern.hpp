@@ -1,42 +1,27 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Intern.hpp                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: nigoncal <nigoncal@student.42lyon.fr>      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/11 16:12:38 by nigoncal          #+#    #+#             */
-/*   Updated: 2021/11/11 16:12:39 by nigoncal         ###   ########lyon.fr   */
-/*                                                                            */
-/* ************************************************************************** */
+#ifndef INTERN_HPP
+# define INTERN_HPP
 
-#ifndef INTERN_H
-# define INTERN_H
-
-#include <iostream>
-#include "Form.hpp"
+# include "PresidentialPardonForm.hpp"
+# include "ShrubberyCreationForm.hpp"
+# include "RobotomyRequestForm.hpp"
 
 class Intern
 {
 	public:
 		Intern();
-		Intern(Intern const &cpy);
+		Intern(Intern const &instance);
+		Intern &operator=(Intern const &instance);
 		~Intern();
+		AForm* makeForm(std::string formName, std::string target) const;
 
-		Intern &operator=(const Intern &cpy);
-		Form *makeForm(std::string form, std::string target);
-
-		class FormNotFoundException : public std::exception {
+		class UnknownForm : public std::exception
+		{
 			public:
-				virtual const char* what() const throw ()
+				virtual const char* what() const throw()
 				{
-					return "Form not found !";
+					return ("\e[0;31mIntern::UnknownForm > Unable to find a valid form\e[0m");
 				}
 		};
-
-	private:
-		std::string _forms[3];
-		Form *(*_formsConstructor[3])(std::string target);
 };
 
 #endif

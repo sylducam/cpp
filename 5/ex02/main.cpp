@@ -1,40 +1,65 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: nigoncal <nigoncal@student.42lyon.fr>      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/11 16:11:17 by nigoncal          #+#    #+#             */
-/*   Updated: 2021/11/12 13:11:16 by nigoncal         ###   ########lyon.fr   */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "PresidentialPardonForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
-#include "PresidentialPardonForm.hpp"
 
-int	main()
+static void defaultTest(Bureaucrat *bureaucrat, AForm *form)
 {
-	Bureaucrat bob("Bob", 20);
-	ShrubberyCreationForm shrub("Shrub");
-	PresidentialPardonForm obama("Obama");
-	RobotomyRequestForm bender("Bender");
-
-	bob.signForm(shrub);
-	bob.signForm(obama);
-	bob.signForm(bender);
-
-	bob.executeForm(shrub);
-
-	try {
-		shrub.execute(bob);
-		obama.execute(bob);
-		bender.execute(bob);
-
+	std::cout << *form << std::endl;
+	try
+	{
+		bureaucrat->signForm(*form);
+		bureaucrat->execute(*form);
 	} catch (std::exception &e) {
-		std::cout << "You can't execute this form because : " << e.what() << std::endl;
+		std::cout << "Unable to execute form : " << e.what() << std::endl;
 	}
+	delete form;
+}
+
+static void executeWithoutSigned(Bureaucrat *bureaucrat, AForm *form)
+{
+	std::cout << *form << std::endl;
+	try
+	{
+		bureaucrat->execute(*form);
+	} catch (std::exception &e) {
+		std::cout << "Unable to execute form : " << e.what() << std::endl;
+	}
+	delete form;
+}
+
+static void testAllForms(Bureaucrat *bureaucrat, void (*f)(Bureaucrat *, AForm *))
+{
+	AForm *form;
+
+	form = new RobotomyRequestForm("Elon");
+	f(bureaucrat, form);
+	std::cout << std::endl;
+
+	form = new ShrubberyCreationForm("Foo");
+	f(bureaucrat, form);
+	std::cout << std::endl;
+
+	form = new PresidentialPardonForm("Bar");
+	f(bureaucrat, form);
+
+	delete bureaucrat;
+}
+
+
+int main()
+{
+	Bureaucrat *bureaucrat;
+
+	bureaucrat = new Bureaucrat("Jacky", 1);
+	testAllForms(bureaucrat, defaultTest);
+	std::cout << std::endl << std::endl;
+
+	bureaucrat = new Bureaucrat("Jason", 1);
+	testAllForms(bureaucrat, executeWithoutSigned);
+	std::cout << std::endl << std::endl;
+
+	bureaucrat = new Bureaucrat("Joe", 150);
+	testAllForms(bureaucrat, defaultTest);
+
+	return 0;
 }
