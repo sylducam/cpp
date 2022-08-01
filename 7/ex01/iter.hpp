@@ -1,14 +1,15 @@
 #include <iostream>
 
-void increment(int* nb)
+template <typename T>
+void increment(T* value)
 {
-	std::cout << "increment before: " << *nb << std::endl;
-	(*nb)++;
-	std::cout << "increment after: " << *nb << std::endl;
+	std::cout << "increment before: " << *value << std::endl;
+	(*value)++;
+	std::cout << "increment after: " << *value << std::endl;
 }
 
-// template <typename T>
-void iter(int* array_address, int size, void (*f)(int*))
+template <typename T>
+void iter(T* array_address, int size, void (*f)(T*))
 {
 	int i = 0;
 	while (i <= size)
@@ -19,14 +20,3 @@ void iter(int* array_address, int size, void (*f)(int*))
 		i++;
 	}
 }
-
-// template <typename T>
-// void iter(T* array_address, int size, void (*f)(void *))
-// {
-// 	int i = 0;
-// 	while (i <= size)
-// 	{
-// 		f(array_address[i]);
-// 		i++;
-// 	}
-// }
