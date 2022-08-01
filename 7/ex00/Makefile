@@ -13,7 +13,7 @@ CFLAGS		= 	-Wall -Wextra -Werror -std=c++98
 all			:	$(NAME)
 
 $(NAME)		:	$(SRCS) $(HEADER)
-				$(COMP) $(CFLAGS) $(SRCS) -o $(NAME)
+				$(COMP) $(CFLAGS) $(SRCS) -o $(NAME) -Iinclude
 
 clean		:
 				$(RM) $(NAME)

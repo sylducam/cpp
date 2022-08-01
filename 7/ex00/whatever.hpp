@@ -1,28 +1,22 @@
-#ifndef WHATEVER_HPP
-# define WHATEVER_HPP
+#include <iostream>
 
-# include <iostream>
-
-template<typename T>
-void swap(T &x, T &y)
+template <typename T>
+void swap(T &a, T &b)
 {
 	T temp;
-
-	temp = x;
-	x = y;
-	y = temp;
+	temp = a;
+	a = b;
+	b = temp;
 }
 
-template<typename T>
-T const &min(T const &x, T const &y)
+template <typename T>
+T& max(T& a, T& b)
 {
-	return (x < y ? x : y);
+	return (a > b ? a : b);
 }
 
-template<typename T>
-T const &max(T const &x, T const &y)
+template <typename T>
+T& min(T& a, T& b)
 {
-	return (x > y ? x : y);
+	return (a < b ? a : b);
 }
-
-#endif

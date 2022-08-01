@@ -1,4 +1,4 @@
-NAME		= 	exe_iter
+NAME		= 	exe_whatever
 
 SRCS		=	$(wildcard *.cpp)
 
@@ -13,7 +13,7 @@ CFLAGS		= 	-Wall -Wextra -Werror -std=c++98
 all			:	$(NAME)
 
 $(NAME)		:	$(SRCS) $(HEADER)
-				$(COMP) $(CFLAGS) $(SRCS) -o $(NAME) -Iinclude
+				$(COMP) $(CFLAGS) $(SRCS) -o $(NAME)
 
 clean		:
 				$(RM) $(NAME)
